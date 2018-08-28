@@ -1,0 +1,13 @@
+target/
+*.iml
+*.log
+*.class
+tmp/
+.idea/
+.openshiftio
+.settings/
+.classpath
+.project
+.DS_Store
+bower_components/
+node_modules/

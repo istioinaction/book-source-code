@@ -1,0 +1,29 @@
+{
+    "author": "Red Hat",
+    "contributors": [
+        "James Falkner <jfalkner@redhat.com> (https://developers.redhat.com)"
+    ],
+    "name": "web",
+    "repository": "jbossdemocentral/coolstore-microservice",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "private": true,
+    "description": "Web UI for the CoolStore Microservices App",
+    "homepage": "https://developers.redhat.com",
+    "dependencies": {
+        "cors": "^2.8.3",
+        "express": "^4.13.4",
+        "keycloak-connect": "^3.1.0",
+        "request": "^2.74.0"
+    },
+    "devDependencies": {
+        "bower": ">=1.7.9",
+        "bower-nexus3-resolver": "*"
+    },
+    "engines": {
+        "node": ">=0.10.10"
+    },
+    "scripts": {
+        "postinstall": "node_modules/.bin/bower --config.registry.search=${BOWER_MIRROR} install"
+    }
+}
