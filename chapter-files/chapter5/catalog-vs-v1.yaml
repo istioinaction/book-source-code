@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: catalog-vs-from-gw
+spec:
+  hosts:
+  - "catalog.istioinaction.io"
+  gateways:
+  - catalog-gateway
+  http:
+  - route:
+    - destination:
+        host: catalog
+        subset: version-v1
