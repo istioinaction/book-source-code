@@ -28,6 +28,11 @@ public class CatalogController {
     @ResponseBody
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Product> getAll(@RequestHeader Map<String, String> headers) {
+
+        System.out.println("Got a request with headers: " +
+                HeadersPrinter.asSingleLineString(headers)
+        );
+
         FailureGenerator.checkFailure(headers);
 
         Spliterator<Product> products = repository.findAll().spliterator();

@@ -49,10 +49,12 @@ public class FailureGenerator {
         }
 
         // should we fail? probability of failure
-        float f = random.nextFloat() * 100;
-        System.out.println("Failure? is " + f + " less than " + failurePercentage + "?");
-        if (f < failurePercentage) {
-            fail();
+        if (failurePercentage > 0) {
+            float f = random.nextFloat() * 100;
+            System.out.println("Failure? is " + f + " less than " + failurePercentage + "?");
+            if (f < failurePercentage) {
+                fail();
+            }
         }
 
     }

@@ -28,8 +28,11 @@ public class CatalogControllerv2 {
     @ResponseBody
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Productv2> getAll(@RequestHeader Map<String, String> headers) {
-        FailureGenerator.checkFailure(headers);
+        System.out.println("Got a request with headers: " +
+                HeadersPrinter.asSingleLineString(headers)
+        );
 
+        FailureGenerator.checkFailure(headers);
         Spliterator<Productv2> products = repositoryv2.findAll().spliterator();
         return StreamSupport.stream(products, false)
                 .collect(Collectors.toList());
