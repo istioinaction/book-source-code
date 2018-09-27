@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: tcp-echo-vs-from-gw
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - nats-passthrough-gateway
+  tls:
+  - match:
+    - port: 31400
+      sniHosts:
+      - nats.istioinaction.io
+    route:
+    - destination:
+        host: nats
+        port:
+          number: 4222
