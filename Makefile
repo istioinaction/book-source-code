@@ -25,7 +25,11 @@ undeploy-apigateway-with-catalog:
 
 .PHONY: ingress-url
 ingress-url:
-	@echo $(shell kubectl get pod -n istio-system -l istio=ingressgateway -o jsonpath='{.items[0].status.hostIP}'):$(shell kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')	
+	@echo $(shell kubectl get pod -n istio-system -l istio=ingressgateway -o jsonpath='{.items[0].status.hostIP}'):$(shell kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+
+.PHONY: get-demo-curl
+get-demo-curl:
+	@echo 'curl -H "Host: apigateway.istioinaction.io" http://$(shell make ingress-url)/api/products'
 
 
 #----------------------------------------------------------------------------------
