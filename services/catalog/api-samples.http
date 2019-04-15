@@ -1,0 +1,87 @@
+### Get items
+GET http://localhost:3000/api/items
+
+### Get one item
+GET http://localhost:3000/api/items/9
+
+### Create new Item
+POST http://localhost:3000/api/items
+Content-Type: application/json
+
+{
+  "color": "blue",
+  "department": "Sports",
+  "name": "Basketball hoop",
+  "price": "2700.00"
+}
+
+
+### Update item
+PUT http://localhost:3000/items/9
+Content-Type: application/json
+
+{
+  "id": 9,
+  "color": "blue",
+  "department": "Books",
+  "name": "Licensed Plastic Chair",
+  "price": "918.00"
+}
+
+### Enable blow up
+POST http://localhost:3000/blowup
+Content-Type: application/json
+
+{
+  "active": true,
+  "type": "500"
+}
+
+
+### Disable blow up
+POST http://localhost:3000/blowup
+Content-Type: application/json
+
+{
+  "active": false,
+  "type": "500"
+}
+
+
+###Get blowups
+GET http://localhost:3000/blowup
+Accept: application/json
+
+
+
+<> 2019-04-10T075714.200.html
+
+### Delay
+POST http://localhost:3000/blowup
+Content-Type: application/json
+
+{
+  "active": true,
+  "type": "latency",
+  "latencyMs": 5000
+}
+
+### Disable Delay
+POST http://localhost:3000/blowup
+Content-Type: application/json
+
+{
+  "active": false,
+  "type": "latency"
+}
+
+###
+
+DELETE http://localhost:3000/blowup
+Content-Type: application/json
+
+{
+  "type": "latency"
+}
+
+###
