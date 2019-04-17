@@ -28,9 +28,14 @@ const blowupMiddleware = function(req, res, next){
 
             if(value.active == true){
                 if(value.type == "500"){
-                    console.log("Sending a 500 blowup")
-                    res.status(500).end();
-                    blownUp=true;
+                    var rando = Math.floor(Math.random() * 100);
+                    var percentage = value.percentage || 100
+                    console.log("rando is " + rando + " and percentage is " + percentage)
+                    if (rando <= percentage) {
+                        console.log("Sending a 500 blowup");
+                        res.status(500).end();
+                        blownUp=true;
+                    }
                 }
                 else if (value.type == "latency") {
                     console.log("Sending a latency blowup for " + value.latencyMs + "ms")

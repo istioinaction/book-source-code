@@ -34,7 +34,18 @@ Content-Type: application/json
 
 {
   "active": true,
-  "type": "500"
+  "type": "500",
+  "percentage": 100
+}
+
+### Enable blow up percentage
+POST http://localhost:3000/blowup
+Content-Type: application/json
+
+{
+  "active": true,
+  "type": "500",
+  "percentage": 50
 }
 
 
