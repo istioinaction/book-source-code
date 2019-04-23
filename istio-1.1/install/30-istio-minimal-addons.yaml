@@ -1,28 +1,4 @@
 ---
-# Source: istio/charts/gateways/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-ingressgateway
-  namespace: istio-system
-  labels:
-    chart: gateways
-    heritage: Tiller
-    release: istio
-    app: istio-ingressgateway
-    istio: ingressgateway
-spec:
-
-  minAvailable: 1
-  selector:
-    matchLabels:
-      release: istio
-      app: istio-ingressgateway
-      istio: ingressgateway
----
-
----
 # Source: istio/charts/pilot/templates/poddisruptionbudget.yaml
 
 apiVersion: policy/v1beta1
@@ -11935,6 +11911,31 @@ data:
       type: file
     
 ---
+# Source: istio/charts/kiali/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kiali
+  namespace: istio-system
+  labels:
+    app: kiali
+    chart: kiali
+    heritage: Tiller
+    release: istio
+data:
+  config.yaml: |
+    istio_namespace: istio-system
+    server:
+      port: 20001
+    external_services:
+      istio:
+        url_service_version: http://istio-pilot:8080/version
+      jaeger:
+        url: 
+      grafana:
+        url: 
+
+---
 # Source: istio/charts/prometheus/templates/configmap.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -12283,8 +12284,6 @@ data:
 
     # Set accessLogEncoding to JSON or TEXT to configure sidecar access log
     accessLogEncoding: 'TEXT'
-    # Let Pilot give ingresses the public IP of the Istio ingressgateway
-    ingressService: istio-ingressgateway
 
     # DNS refresh rate for Envoy clusters of type STRICT_DNS
     dnsRefreshRate: 5s
@@ -12397,7 +12396,7 @@ data:
   config: |-
     policy: enabled
     template: |-
-      rewriteAppHTTPProbe: false
+      rewriteAppHTTPProbe: 
       initContainers:
       [[ if ne (annotation .ObjectMeta `sidecar.istio.io/interceptionMode` .ProxyConfig.InterceptionMode) "NONE" ]]
       - name: istio-init
@@ -12597,22 +12596,6 @@ data:
         [[ end ]]
 
 ---
-# Source: istio/charts/gateways/templates/serviceaccount.yaml
-
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: istio-ingressgateway-service-account
-  namespace: istio-system
-  labels:
-    app: istio-ingressgateway
-    chart: gateways
-    heritage: Tiller
-    release: istio
----
-
-
----
 # Source: istio/charts/grafana/templates/create-custom-resources-job.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -12695,6 +12678,19 @@ spec:
       restartPolicy: OnFailure
 
 ---
+# Source: istio/charts/kiali/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kiali-service-account
+  namespace: istio-system
+  labels:
+    app: kiali
+    chart: kiali
+    heritage: Tiller
+    release: istio
+
+---
 # Source: istio/charts/pilot/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -12721,20 +12717,6 @@ metadata:
     release: istio
 
 ---
-# Source: istio/charts/sidecarInjectorWebhook/templates/serviceaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: istio-sidecar-injector-service-account
-  namespace: istio-system
-  labels:
-    app: sidecarInjectorWebhook
-    chart: sidecarInjectorWebhook
-    heritage: Tiller
-    release: istio
-    istio: sidecar-injector
-
----
 # Source: istio/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -12743,22 +12725,112 @@ metadata:
   namespace: istio-system
 
 ---
-# Source: istio/charts/gateways/templates/clusterrole.yaml
-
+# Source: istio/charts/kiali/templates/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: istio-ingressgateway-istio-system
+  name: kiali
   labels:
-    app: ingressgateway
-    chart: gateways
+    app: kiali
+    chart: kiali
     heritage: Tiller
     release: istio
 rules:
+- apiGroups: [""]
+  resources:
+  - configmaps
+  - endpoints
+  - namespaces
+  - nodes
+  - pods
+  - services
+  - replicationcontrollers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["extensions", "apps"]
+  resources:
+  - deployments
+  - statefulsets
+  - replicasets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["autoscaling"]
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["batch"]
+  resources:
+  - cronjobs
+  - jobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["config.istio.io"]
+  resources:
+  - apikeys
+  - authorizations
+  - checknothings
+  - circonuses
+  - deniers
+  - fluentds
+  - handlers
+  - kubernetesenvs
+  - kuberneteses
+  - listcheckers
+  - listentries
+  - logentries
+  - memquotas
+  - metrics
+  - opas
+  - prometheuses
+  - quotas
+  - quotaspecbindings
+  - quotaspecs
+  - rbacs
+  - reportnothings
+  - rules
+  - solarwindses
+  - stackdrivers
+  - statsds
+  - stdios
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - watch
 - apiGroups: ["networking.istio.io"]
-  resources: ["virtualservices", "destinationrules", "gateways"]
-  verbs: ["get", "watch", "list", "update"]
----
+  resources:
+  - destinationrules
+  - gateways
+  - serviceentries
+  - virtualservices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - watch
+- apiGroups: ["authentication.istio.io"]
+  resources:
+  - policies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - watch
 
 ---
 # Source: istio/charts/pilot/templates/clusterrole.yaml
@@ -12825,26 +12897,6 @@ rules:
   verbs: ["get"]
 
 ---
-# Source: istio/charts/sidecarInjectorWebhook/templates/clusterrole.yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: istio-sidecar-injector-istio-system
-  labels:
-    app: sidecarInjectorWebhook
-    chart: sidecarInjectorWebhook
-    heritage: Tiller
-    release: istio
-    istio: sidecar-injector
-rules:
-- apiGroups: [""]
-  resources: ["configmaps"]
-  verbs: ["get", "list", "watch"]
-- apiGroups: ["admissionregistration.k8s.io"]
-  resources: ["mutatingwebhookconfigurations"]
-  verbs: ["get", "list", "watch", "patch"]
-
----
 # Source: istio/templates/clusterrole.yaml
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -12859,26 +12911,24 @@ rules:
     verbs: ["get", "list", "watch"]
 
 ---
-# Source: istio/charts/gateways/templates/clusterrolebindings.yaml
-
+# Source: istio/charts/kiali/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: istio-ingressgateway-istio-system
+  name: istio-kiali-admin-role-binding-istio-system
   labels:
-    app: ingressgateway
-    chart: gateways
+    app: kiali
+    chart: kiali
     heritage: Tiller
     release: istio
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: istio-ingressgateway-istio-system
+  name: kiali
 subjects:
 - kind: ServiceAccount
-  name: istio-ingressgateway-service-account
+  name: kiali-service-account
   namespace: istio-system
----
 
 ---
 # Source: istio/charts/pilot/templates/clusterrolebinding.yaml
@@ -12921,27 +12971,6 @@ subjects:
   namespace: istio-system
 
 ---
-# Source: istio/charts/sidecarInjectorWebhook/templates/clusterrolebinding.yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: istio-sidecar-injector-admin-role-binding-istio-system
-  labels:
-    app: sidecarInjectorWebhook
-    chart: sidecarInjectorWebhook
-    heritage: Tiller
-    release: istio
-    istio: sidecar-injector
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: istio-sidecar-injector-istio-system
-subjects:
-  - kind: ServiceAccount
-    name: istio-sidecar-injector-service-account
-    namespace: istio-system
-
----
 # Source: istio/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -12957,98 +12986,6 @@ subjects:
 - kind: ServiceAccount
   name: istio-multi
   namespace: istio-system
-
----
-# Source: istio/charts/gateways/templates/role.yaml
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: istio-ingressgateway-sds
-  namespace: istio-system
-rules:
-- apiGroups: [""]
-  resources: ["secrets"]
-  verbs: ["get", "watch", "list"]
----
-
----
-# Source: istio/charts/gateways/templates/rolebindings.yaml
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: istio-ingressgateway-sds
-  namespace: istio-system
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: istio-ingressgateway-sds
-subjects:
-- kind: ServiceAccount
-  name: istio-ingressgateway-service-account
----
-
----
-# Source: istio/charts/gateways/templates/service.yaml
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: istio-ingressgateway
-  namespace: istio-system
-  annotations:
-  labels:
-    chart: gateways
-    heritage: Tiller
-    release: istio
-    app: istio-ingressgateway
-    istio: ingressgateway
-spec:
-  type: LoadBalancer
-  selector:
-    release: istio
-    app: istio-ingressgateway
-    istio: ingressgateway
-  ports:
-    -
-      name: http2
-      nodePort: 31380
-      port: 80
-      targetPort: 80
-    -
-      name: https
-      nodePort: 31390
-      port: 443
-    -
-      name: tcp
-      nodePort: 31400
-      port: 31400
-    -
-      name: https-kiali
-      port: 15029
-      targetPort: 15029
-    -
-      name: https-prometheus
-      port: 15030
-      targetPort: 15030
-    -
-      name: https-grafana
-      port: 15031
-      targetPort: 15031
-    -
-      name: https-tracing
-      port: 15032
-      targetPort: 15032
-    -
-      name: tls
-      port: 15443
-      targetPort: 15443
-    -
-      name: status-port
-      port: 15020
-      targetPort: 15020
----
 
 ---
 # Source: istio/charts/grafana/templates/service.yaml
@@ -13073,6 +13010,26 @@ spec:
   selector:
     app: grafana
   
+---
+# Source: istio/charts/kiali/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kiali
+  namespace: istio-system
+  labels:
+    app: kiali
+    chart: kiali
+    heritage: Tiller
+    release: istio
+spec:
+  ports:
+  - name: http-kiali
+    protocol: TCP
+    port: 20001
+  selector:
+    app: kiali
+
 ---
 # Source: istio/charts/pilot/templates/service.yaml
 apiVersion: v1
@@ -13120,194 +13077,6 @@ spec:
   - name: http-prometheus
     protocol: TCP
     port: 9090
-
----
-# Source: istio/charts/sidecarInjectorWebhook/templates/service.yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: istio-sidecar-injector
-  namespace: istio-system
-  labels:
-    app: sidecarInjectorWebhook
-    chart: sidecarInjectorWebhook
-    heritage: Tiller
-    release: istio
-    istio: sidecar-injector
-spec:
-  ports:
-  - port: 443
-  selector:
-    istio: sidecar-injector
-
----
-# Source: istio/charts/gateways/templates/deployment.yaml
-
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: istio-ingressgateway
-  namespace: istio-system
-  labels:
-    chart: gateways
-    heritage: Tiller
-    release: istio
-    app: istio-ingressgateway
-    istio: ingressgateway
-spec:
-  template:
-    metadata:
-      labels:
-        chart: gateways
-        heritage: Tiller
-        release: istio
-        app: istio-ingressgateway
-        istio: ingressgateway
-      annotations:
-        sidecar.istio.io/inject: "false"
-        scheduler.alpha.kubernetes.io/critical-pod: ""
-    spec:
-      serviceAccountName: istio-ingressgateway-service-account
-      containers:
-        - name: istio-proxy
-          image: "docker.io/istio/proxyv2:1.1.2"
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
-            - containerPort: 443
-            - containerPort: 31400
-            - containerPort: 15029
-            - containerPort: 15030
-            - containerPort: 15031
-            - containerPort: 15032
-            - containerPort: 15443
-            - containerPort: 15020
-            - containerPort: 15090
-              protocol: TCP
-              name: http-envoy-prom
-          args:
-          - proxy
-          - router
-          - --domain
-          - $(POD_NAMESPACE).svc.cluster.local
-          - --log_output_level
-          - 'info'
-          - --drainDuration
-          - '45s' #drainDuration
-          - --parentShutdownDuration
-          - '1m0s' #parentShutdownDuration
-          - --connectTimeout
-          - '10s' #connectTimeout
-          - --serviceCluster
-          - istio-ingressgateway
-          - --zipkinAddress
-          - zipkin:9411
-          - --proxyAdminPort
-          - "15000"
-          - --statusPort
-          - "15020"
-          - --controlPlaneAuthPolicy
-          - NONE
-          - --discoveryAddress
-          - istio-pilot:15010
-          readinessProbe:
-            failureThreshold: 30
-            httpGet:
-              path: /healthz/ready
-              port: 15020
-              scheme: HTTP
-            initialDelaySeconds: 1
-            periodSeconds: 2
-            successThreshold: 1
-            timeoutSeconds: 1
-          resources:
-            requests:
-              cpu: 10m
-            
-          env:
-          - name: POD_NAME
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.name
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-          - name: INSTANCE_IP
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: status.podIP
-          - name: ISTIO_META_POD_NAME
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.name
-          - name: ISTIO_META_CONFIG_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          - name: ISTIO_META_ROUTER_MODE
-            value: sni-dnat
-          volumeMounts:
-          - name: istio-certs
-            mountPath: /etc/certs
-            readOnly: true
-          - name: ingressgateway-certs
-            mountPath: "/etc/istio/ingressgateway-certs"
-            readOnly: true
-          - name: ingressgateway-ca-certs
-            mountPath: "/etc/istio/ingressgateway-ca-certs"
-            readOnly: true
-      volumes:
-      - name: istio-certs
-        secret:
-          secretName: istio.istio-ingressgateway-service-account
-          optional: true
-      - name: ingressgateway-certs
-        secret:
-          secretName: "istio-ingressgateway-certs"
-          optional: true
-      - name: ingressgateway-ca-certs
-        secret:
-          secretName: "istio-ingressgateway-ca-certs"
-          optional: true
-      affinity:      
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                - amd64
-                - ppc64le
-                - s390x
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 2
-            preference:
-              matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                - amd64
-          - weight: 2
-            preference:
-              matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                - ppc64le
-          - weight: 2
-            preference:
-              matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                - s390x
----
 
 ---
 # Source: istio/charts/grafana/templates/deployment.yaml
@@ -13459,6 +13228,111 @@ spec:
       - name: dashboards-istio-pilot-dashboard
         configMap:
           name:  istio-grafana-configuration-dashboards-pilot-dashboard
+
+---
+# Source: istio/charts/kiali/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kiali
+  namespace: istio-system
+  labels:
+    app: kiali
+    chart: kiali
+    heritage: Tiller
+    release: istio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kiali
+  template:
+    metadata:
+      name: kiali
+      labels:
+        app: kiali
+        chart: kiali
+        heritage: Tiller
+        release: istio
+      annotations:
+        sidecar.istio.io/inject: "false"
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+    spec:
+      serviceAccountName: kiali-service-account
+      containers:
+      - image: "docker.io/kiali/kiali:v0.14"
+        name: kiali
+        command:
+        - "/opt/kiali/kiali"
+        - "-config"
+        - "/kiali-configuration/config.yaml"
+        - "-v"
+        - "4"
+        env:
+        - name: ACTIVE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: SERVER_CREDENTIALS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: kiali
+              key: username
+              optional: true
+        - name: SERVER_CREDENTIALS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kiali
+              key: passphrase
+              optional: true
+        - name: PROMETHEUS_SERVICE_URL
+          value: http://prometheus:9090
+        - name: SERVER_WEB_ROOT
+          value: /kiali
+        volumeMounts:
+        - name: kiali-configuration
+          mountPath: "/kiali-configuration"
+        resources:
+          requests:
+            cpu: 10m
+          
+      volumes:
+      - name: kiali-configuration
+        configMap:
+          name: kiali
+      affinity:      
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - ppc64le
+                - s390x
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 2
+            preference:
+              matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+          - weight: 2
+            preference:
+              matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - ppc64le
+          - weight: 2
+            preference:
+              matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - s390x
 
 ---
 # Source: istio/charts/pilot/templates/deployment.yaml
@@ -13702,94 +13576,71 @@ spec:
                 - s390x
 
 ---
-# Source: istio/charts/sidecarInjectorWebhook/templates/deployment.yaml
+# Source: istio/charts/tracing/templates/deployment-jaeger.yaml
+
+
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: istio-sidecar-injector
+  name: istio-tracing
   namespace: istio-system
   labels:
-    app: sidecarInjectorWebhook
-    chart: sidecarInjectorWebhook
+    app: jaeger
+    chart: tracing
     heritage: Tiller
     release: istio
-    istio: sidecar-injector
 spec:
-  replicas: 1
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
   template:
     metadata:
       labels:
-        app: sidecarInjectorWebhook
-        chart: sidecarInjectorWebhook
+        app: jaeger
+        chart: tracing
         heritage: Tiller
         release: istio
-        istio: sidecar-injector
       annotations:
         sidecar.istio.io/inject: "false"
         scheduler.alpha.kubernetes.io/critical-pod: ""
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "16686"
+        prometheus.io/path: "/jaeger/metrics"
     spec:
-      serviceAccountName: istio-sidecar-injector-service-account
       containers:
-        - name: sidecar-injector-webhook
-          image: "docker.io/istio/sidecar_injector:1.1.2"
+        - name: jaeger
+          image: "docker.io/jaegertracing/all-in-one:1.9"
           imagePullPolicy: IfNotPresent
-          args:
-            - --caCertFile=/etc/istio/certs/root-cert.pem
-            - --tlsCertFile=/etc/istio/certs/cert-chain.pem
-            - --tlsKeyFile=/etc/istio/certs/key.pem
-            - --injectConfig=/etc/istio/inject/config
-            - --meshConfig=/etc/istio/config/mesh
-            - --healthCheckInterval=2s
-            - --healthCheckFile=/health
-          volumeMounts:
-          - name: config-volume
-            mountPath: /etc/istio/config
-            readOnly: true
-          - name: certs
-            mountPath: /etc/istio/certs
-            readOnly: true
-          - name: inject-config
-            mountPath: /etc/istio/inject
-            readOnly: true
+          ports:
+            - containerPort: 9411
+            - containerPort: 16686
+            - containerPort: 5775
+              protocol: UDP
+            - containerPort: 6831
+              protocol: UDP
+            - containerPort: 6832
+              protocol: UDP
+          env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: COLLECTOR_ZIPKIN_HTTP_PORT
+            value: "9411"
+          - name: MEMORY_MAX_TRACES
+            value: "50000"
+          - name: QUERY_BASE_PATH
+            value:  /jaeger 
           livenessProbe:
-            exec:
-              command:
-                - /usr/local/bin/sidecar-injector
-                - probe
-                - --probe-path=/health
-                - --interval=4s
-            initialDelaySeconds: 4
-            periodSeconds: 4
+            httpGet:
+              path: /
+              port: 16686
           readinessProbe:
-            exec:
-              command:
-                - /usr/local/bin/sidecar-injector
-                - probe
-                - --probe-path=/health
-                - --interval=4s
-            initialDelaySeconds: 4
-            periodSeconds: 4
+            httpGet:
+              path: /
+              port: 16686
           resources:
             requests:
               cpu: 10m
             
-      volumes:
-      - name: config-volume
-        configMap:
-          name: istio
-      - name: certs
-        secret:
-          secretName: istio.istio-sidecar-injector-service-account
-      - name: inject-config
-        configMap:
-          name: istio-sidecar-injector
-          items:
-          - key: config
-            path: config
       affinity:      
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -13824,32 +13675,7 @@ spec:
                 values:
                 - s390x
 
----
-# Source: istio/charts/gateways/templates/autoscale.yaml
 
-apiVersion: autoscaling/v2beta1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: istio-ingressgateway
-  namespace: istio-system
-  labels:
-    app: ingressgateway
-    chart: gateways
-    heritage: Tiller
-    release: istio
-spec:
-  maxReplicas: 5
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1beta1
-    kind: Deployment
-    name: istio-ingressgateway
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: 80
----
 
 ---
 # Source: istio/charts/pilot/templates/autoscale.yaml
@@ -13879,39 +13705,148 @@ spec:
 ---
 
 ---
-# Source: istio/charts/sidecarInjectorWebhook/templates/mutatingwebhook.yaml
-apiVersion: admissionregistration.k8s.io/v1beta1
-kind: MutatingWebhookConfiguration
+# Source: istio/charts/tracing/templates/service-jaeger.yaml
+
+
+apiVersion: v1
+kind: List
 metadata:
-  name: istio-sidecar-injector
+  name: jaeger-services
   namespace: istio-system
   labels:
-    app: sidecarInjectorWebhook
-    chart: sidecarInjectorWebhook
+    app: jaeger
+    chart: tracing
     heritage: Tiller
     release: istio
-webhooks:
-  - name: sidecar-injector.istio.io
-    clientConfig:
-      service:
-        name: istio-sidecar-injector
-        namespace: istio-system
-        path: "/inject"
-      caBundle: ""
-    rules:
-      - operations: [ "CREATE" ]
-        apiGroups: [""]
-        apiVersions: ["v1"]
-        resources: ["pods"]
-    failurePolicy: Fail
-    namespaceSelector:
-      matchLabels:
-        istio-injection: enabled
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: jaeger-query
+    namespace: istio-system
+    annotations:
+    labels:
+      app: jaeger
+      jaeger-infra: jaeger-service
+      chart: tracing
+      heritage: Tiller
+      release: istio
+  spec:
+    ports:
+      - name: query-http
+        port: 16686
+        protocol: TCP
+        targetPort: 16686
+    selector:
+      app: jaeger
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: jaeger-collector
+    namespace: istio-system
+    labels:
+      app: jaeger
+      jaeger-infra: collector-service
+      chart: tracing
+      heritage: Tiller
+      release: istio
+  spec:
+    ports:
+    - name: jaeger-collector-tchannel
+      port: 14267
+      protocol: TCP
+      targetPort: 14267
+    - name: jaeger-collector-http
+      port: 14268
+      targetPort: 14268
+      protocol: TCP
+    selector:
+      app: jaeger
+    type: ClusterIP
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: jaeger-agent
+    namespace: istio-system
+    labels:
+      app: jaeger
+      jaeger-infra: agent-service
+      chart: tracing
+      heritage: Tiller
+      release: istio
+  spec:
+    ports:
+    - name: agent-zipkin-thrift
+      port: 5775
+      protocol: UDP
+      targetPort: 5775
+    - name: agent-compact
+      port: 6831
+      protocol: UDP
+      targetPort: 6831
+    - name: agent-binary
+      port: 6832
+      protocol: UDP
+      targetPort: 6832
+    clusterIP: None
+    selector:
+      app: jaeger
+
 
 
 ---
-# Source: istio/charts/gateways/templates/preconfigured.yaml
+# Source: istio/charts/tracing/templates/service.yaml
+apiVersion: v1
+kind: List
+metadata:
+  name: tracing-services
+  namespace: istio-system
+  labels:
+    app: jaeger
+    chart: tracing
+    heritage: Tiller
+    release: istio
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: zipkin
+    namespace: istio-system
+    labels:
+      app: jaeger
+      chart: tracing
+      heritage: Tiller
+      release: istio
+  spec:
+    type: ClusterIP
+    ports:
+      - port: 9411
+        targetPort: 9411
+        protocol: TCP
+        name: http
+    selector:
+      app: jaeger
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: tracing
+    namespace: istio-system
+    annotations:
+    labels:
+      app: jaeger
+      chart: tracing
+      heritage: Tiller
+      release: istio
+  spec:
+    ports:
+      - name: http-query
+        port: 80
+        protocol: TCP
 
+        targetPort: 16686
+
+    selector:
+      app: jaeger
 
 ---
 # Source: istio/charts/grafana/templates/grafana-ports-mtls.yaml
@@ -13926,6 +13861,17 @@ webhooks:
 
 ---
 # Source: istio/charts/grafana/templates/tests/test-grafana-connection.yaml
+
+
+---
+# Source: istio/charts/kiali/templates/demosecret.yaml
+
+
+---
+# Source: istio/charts/kiali/templates/ingress.yaml
+
+---
+# Source: istio/charts/kiali/templates/tests/test-kiali-connection.yaml
 
 
 ---
@@ -13971,6 +13917,17 @@ webhooks:
 
 ---
 # Source: istio/charts/prometheus/templates/tests/test-prometheus-connection.yaml
+
+
+---
+# Source: istio/charts/tracing/templates/deployment-zipkin.yaml
+
+
+---
+# Source: istio/charts/tracing/templates/ingress.yaml
+
+---
+# Source: istio/charts/tracing/templates/tests/test-tracing-connection.yaml
 
 
 ---

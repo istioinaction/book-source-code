@@ -1421,7 +1421,6 @@ spec:
           ports:
           - containerPort: 8080
           - containerPort: 15010
-          - containerPort: 15011
           readinessProbe:
             httpGet:
               path: /ready
@@ -1456,6 +1455,52 @@ spec:
           volumeMounts:
           - name: config-volume
             mountPath: /etc/istio/config
+          - name: istio-certs
+            mountPath: /etc/certs
+            readOnly: true
+        - name: istio-proxy
+          image: "docker.io/istio/proxyv2:1.1.2"
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 15003
+          - containerPort: 15005
+          - containerPort: 15007
+          - containerPort: 15011
+          args:
+          - proxy
+          - --domain
+          - $(POD_NAMESPACE).svc.cluster.local
+          - --serviceCluster
+          - istio-pilot
+          - --templateFile
+          - /etc/istio/proxy/envoy_pilot.yaml.tmpl
+          - --controlPlaneAuthPolicy
+          - NONE
+          env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: INSTANCE_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            
+          volumeMounts:
           - name: istio-certs
             mountPath: /etc/certs
             readOnly: true
