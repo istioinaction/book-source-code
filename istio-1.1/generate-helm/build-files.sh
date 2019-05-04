@@ -11,3 +11,4 @@ sh $DIRECTORY/30-helm-istio-minimal-addons.sh
 sh $DIRECTORY/40-helm-istio-medium.sh
 sh $DIRECTORY/50-helm-istio-almost-full.sh
 sh $DIRECTORY/60-helm-istio-full.sh
+sh $DIRECTORY/crds.sh
