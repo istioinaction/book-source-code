@@ -11,11 +11,11 @@ helm template $ISTIO_RELEASE/install/kubernetes/helm/istio \
   --set galley.enabled=false \
   --set global.useMCP=false \
   --set sidecarInjectorWebhook.enabled=true \
-  --set mixer.enabled=false \
-  --set mixer.policy.enabled=false \
-  --set mixer.telemetry.enabled=false \
+  --set mixer.enabled=true \
+  --set mixer.policy.enabled=true \
+  --set mixer.telemetry.enabled=true \
   --set prometheus.enabled=true \
-  --set grafana.enabled=true \
+  --set grafana.enabled=false \
   --set tracing.enabled=false \
   --set kiali.enabled=false \
-  --set pilot.sidecar=true  > $DIRECTORY/../install/40-istio-medium.yaml
+  --set pilot.sidecar=true  > $DIRECTORY/../../install/50-istio-almost-full.yaml

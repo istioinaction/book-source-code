@@ -5,7 +5,7 @@ source $DIRECTORY/set-env.sh
 helm template $ISTIO_RELEASE/install/kubernetes/helm/istio \
   --name istio \
   --namespace istio-system \
-  --set gateways.enabled=false \
+  --set gateways.enabled=true \
   --set security.enabled=false \
   --set global.mtls.enabled=false \
   --set galley.enabled=false \
@@ -14,8 +14,8 @@ helm template $ISTIO_RELEASE/install/kubernetes/helm/istio \
   --set mixer.enabled=false \
   --set mixer.policy.enabled=false \
   --set mixer.telemetry.enabled=false \
-  --set prometheus.enabled=true \
-  --set grafana.enabled=true \
-  --set tracing.enabled=true \
-  --set kiali.enabled=true \
-  --set pilot.sidecar=false  > $DIRECTORY/../install/30-istio-minimal-addons.yaml
+  --set prometheus.enabled=false \
+  --set grafana.enabled=false \
+  --set tracing.enabled=false \
+  --set kiali.enabled=false \
+  --set pilot.sidecar=false  > $DIRECTORY/../../install/10-istio-minimal.yaml

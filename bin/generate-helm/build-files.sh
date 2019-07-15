@@ -2,8 +2,8 @@
 DIRECTORY=$(cd `dirname $0` && pwd)
 
 
-rm -fr $DIRECTORY/../install
-mkdir $DIRECTORY/../install
+rm -fr $DIRECTORY/../../install
+mkdir $DIRECTORY/../../install
 
 sh $DIRECTORY/00-helm-istio-starter.sh
 sh $DIRECTORY/10-helm-istio-minimal.sh

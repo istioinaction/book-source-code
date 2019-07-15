@@ -1,4 +1,3 @@
-
 DIRECTORY=$(cd `dirname $0` && pwd)
 
 source $DIRECTORY/set-env.sh
@@ -15,8 +14,8 @@ helm template $ISTIO_RELEASE/install/kubernetes/helm/istio \
   --set mixer.enabled=false \
   --set mixer.policy.enabled=false \
   --set mixer.telemetry.enabled=false \
-  --set prometheus.enabled=false \
-  --set grafana.enabled=false \
-  --set tracing.enabled=false \
-  --set kiali.enabled=false \
-  --set pilot.sidecar=false  > $DIRECTORY/../install/00-istio-starter.yaml
+  --set prometheus.enabled=true \
+  --set grafana.enabled=true \
+  --set tracing.enabled=true \
+  --set kiali.enabled=true \
+  --set pilot.sidecar=false  > $DIRECTORY/../../install/30-istio-minimal-addons.yaml

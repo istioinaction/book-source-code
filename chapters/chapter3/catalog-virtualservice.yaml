@@ -11,5 +11,6 @@ spec:
         host: catalog
     retries:
       attempts: 3
+      retryOn: 5xx
       perTryTimeout: 2s
 
