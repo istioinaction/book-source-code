@@ -1,46 +1,54 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: istio-ingressgateway
   namespace: istio-system
   labels:
-    app: ingressgateway
-    chart: gateways-1.0.0
-    release: RELEASE-NAME
+    chart: gateways
     heritage: Tiller
+    release: istio
     app: istio-ingressgateway
     istio: ingressgateway
 spec:
-  replicas: 1
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+      istio: ingressgateway
   template:
     metadata:
       labels:
+        chart: gateways
+        heritage: Tiller
+        release: istio
         app: istio-ingressgateway
         istio: ingressgateway
       annotations:
         sidecar.istio.io/inject: "false"
-        scheduler.alpha.kubernetes.io/critical-pod: ""
     spec:
       serviceAccountName: istio-ingressgateway-service-account
       containers:
-        - name: ingressgateway
-          image: "gcr.io/istio-release/proxyv2:1.0.0"
+        - name: istio-proxy
+          image: "docker.io/istio/proxyv2:1.2.2"
           imagePullPolicy: IfNotPresent
           ports:
+            - containerPort: 15020
             - containerPort: 80
             - containerPort: 443
             - containerPort: 31400
-            - containerPort: 15011
-            - containerPort: 8060
+            - containerPort: 15029
             - containerPort: 15030
             - containerPort: 15031
+            - containerPort: 15032
+            - containerPort: 15443
+            - containerPort: 15090
+              protocol: TCP
+              name: http-envoy-prom
           args:
           - proxy
           - router
-          - -v
-          - "2"
-          - --discoveryRefreshDelay
-          - '1s' #discoveryRefreshDelay
+          - --domain
+          - $(POD_NAMESPACE).svc.cluster.local
+          - --log_output_level=default:info
           - --drainDuration
           - '45s' #drainDuration
           - --parentShutdownDuration
@@ -51,19 +59,38 @@ spec:
           - istio-ingressgateway
           - --zipkinAddress
           - zipkin:9411
-          - --statsdUdpAddress
-          - istio-statsd-prom-bridge:9125
           - --proxyAdminPort
           - "15000"
+          - --statusPort
+          - "15020"
           - --controlPlaneAuthPolicy
           - NONE
           - --discoveryAddress
-          - istio-pilot.istio-system:8080
+          - istio-pilot:15010
+          readinessProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /healthz/ready
+              port: 15020
+              scheme: HTTP
+            initialDelaySeconds: 1
+            periodSeconds: 2
+            successThreshold: 1
+            timeoutSeconds: 1
           resources:
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
             requests:
-              cpu: 10m
-
+              cpu: 100m
+              memory: 128Mi
+            
           env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
           - name: POD_NAME
             valueFrom:
               fieldRef:
@@ -79,10 +106,22 @@ spec:
               fieldRef:
                 apiVersion: v1
                 fieldPath: status.podIP
+          - name: HOST_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.hostIP
           - name: ISTIO_META_POD_NAME
             valueFrom:
               fieldRef:
+                apiVersion: v1
                 fieldPath: metadata.name
+          - name: ISTIO_META_CONFIG_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: ISTIO_META_ROUTER_MODE
+            value: sni-dnat
           volumeMounts:
           - name: istio-certs
             mountPath: /etc/certs
@@ -113,7 +152,7 @@ spec:
         secret:
           secretName: "catalog-ingressgateway-certs"
           optional: true
-      affinity:
+      affinity:      
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
@@ -145,4 +184,4 @@ spec:
               - key: beta.kubernetes.io/arch
                 operator: In
                 values:
-                - s390x
+                - s390x  
