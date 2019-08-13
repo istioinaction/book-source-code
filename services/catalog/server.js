@@ -5,6 +5,10 @@ const data = require('./generate.js')
 const router = jsonServer.router(data())
 const middlewares = jsonServer.defaults({"bodyParser": true})
 
+var morgan = require('morgan')
+morgan.token('host', function (req, res) { return req.headers['host'] })
+server.use(morgan(':method :host :url :status :res[content-length] - :response-time ms'))
+
 const rewriter = jsonServer.rewriter({
     "/api/*": "/$1"
 })

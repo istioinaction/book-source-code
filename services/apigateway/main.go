@@ -22,6 +22,7 @@ func Catalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	for name, value := range r.Header {
 		if strings.HasPrefix(strings.ToLower(name), "x-") {
 			req.Header.Add(name, value[0])
+			fmt.Printf("Adding header to request: %s=%s", name, value[0])
 		}
 	}
 
