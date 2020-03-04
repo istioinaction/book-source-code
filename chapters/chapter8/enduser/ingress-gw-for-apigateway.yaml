@@ -1,11 +1,11 @@
----
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: coolstore-gateway
+  name: apigateway-gateway
+  namespace: istioinaction
 spec:
   selector:
-    istio: ingressgateway # use istio default controller
+    istio: ingressgateway
   servers:
   - port:
       number: 80
@@ -18,15 +18,15 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: apigateway-virtualservice
+  namespace: istioinaction
 spec:
   hosts:
   - "apiserver.istioinaction.io"
   gateways:
-  - coolstore-gateway
+  - apigateway-gateway
   http:
   - route:
     - destination:
         host: apigateway
         port:
           number: 80
-
