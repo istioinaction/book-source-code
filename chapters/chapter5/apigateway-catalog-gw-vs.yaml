@@ -12,7 +12,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "apigateway.istioinaction.io"
+    - "apiserver.istioinaction.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -20,7 +20,7 @@ metadata:
   name: apigateway-virtualservice
 spec:
   hosts:
-  - "apigateway.istioinaction.io"
+  - "apiserver.istioinaction.io"
   gateways:
   - coolstore-gateway
   http:
