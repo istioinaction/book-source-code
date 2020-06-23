@@ -49,4 +49,4 @@ spec:
           name: http
           protocol: TCP
         securityContext:
-          privileged: true
+          privileged: false
