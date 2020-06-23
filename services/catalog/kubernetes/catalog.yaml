@@ -1,3 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: catalog
 ---
 apiVersion: v1
 kind: Service
@@ -32,7 +36,8 @@ spec:
       labels:
         app: catalog
         version: v1
-    spec:
+    spec: 
+      serviceAccountName: catalog
       containers:
       - env:
         - name: KUBERNETES_NAMESPACE

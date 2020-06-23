@@ -1,3 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: apigateway
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +34,7 @@ spec:
       labels:
         app: apigateway
     spec:
+      serviceAccountName: apigateway
       containers:
       - env:
         - name: KUBERNETES_NAMESPACE
@@ -44,4 +49,4 @@ spec:
           name: http
           protocol: TCP
         securityContext:
-          privileged: false
+          privileged: true
