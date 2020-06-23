@@ -31,6 +31,31 @@ ingress-url:
 get-demo-curl:
 	@echo 'curl -H "Host: apigateway.istioinaction.io" http://$(shell make ingress-url)/api/products'
 
+.PHONY: chapter8-setup-authn
+chapter8-setup-authn:
+	-kubectl delete ns istioinaction
+	-kubectl create ns istioinaction
+	-kubectl -n default delete -f chapters/chapter8/sleep.yaml
+	-istioctl kube-inject -f services/catalog/kubernetes/catalog.yaml | kubectl -n istioinaction apply -f -
+	-istioctl kube-inject -f services/apigateway/kubernetes/apigateway.yaml | kubectl -n istioinaction apply -f -
+	-kubectl -n default apply -f chapters/chapter8/sleep.yaml
+	-kubectl apply -f chapters/chapter8/meshwide-strict-peer-authn.yaml
+	-kubectl apply -f chapters/chapter8/workload-permissive-peer-authn.yaml
+
+.PHONY: chapter8-setup-authn-authz
+chapter8-setup-authn-authz: chapter8-setup-authn
+	-kubectl apply -f chapters/chapter8/policy-deny-all-mesh.yaml
+	-kubectl apply -f chapters/chapter8/allow-unauthenticated-view-default-ns.yaml
+	-kubectl apply -f chapters/chapter8/catalog-viewer-policy.yaml
+
+.PHONY: chapter8-cleanup
+chapter8-cleanup:
+	-kubectl delete authorizationpolicy --all -n istio-system
+	-kubectl delete authorizationpolicy --all -n istioinaction
+	-kubectl delete requestauthentication --all -n istio-system
+	-kubectl delete requestauthentication --all -n istioinaction
+	-kubectl delete -f chapters/chapter8/sleep.yaml -n default
+	-kubectl delete ns istioinaction
 
 #----------------------------------------------------------------------------------
 # Port forward Observability

@@ -1,0 +1,11 @@
+apiVersion: "security.istio.io/v1beta1"
+kind: "PeerAuthentication"
+metadata:
+  name: "apigateway"
+  namespace: "istioinaction"
+spec:
+  selector:
+    matchLabels:
+      app: apigateway 
+  mtls:
+    mode: PERMISSIVE
