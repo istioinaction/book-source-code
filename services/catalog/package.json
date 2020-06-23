@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "faker": "^4.1.0",
-    "json-server": "^0.14.2"
+    "json-server": "^0.14.2",
+    "lodash": "^4.17.15"
   }
 }
