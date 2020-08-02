@@ -4,6 +4,10 @@ metadata:
   name: "allow-mesh-all-ops-admin"
   namespace: istio-system
 spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  action: ALLOW
   rules:
   - from:
     - source:

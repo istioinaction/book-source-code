@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: apigateway-gateway
+  namespace: istioinaction
 spec:
   selector:
     istio: ingressgateway
@@ -11,15 +12,16 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "apiserver.istioinaction.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: apigateway-virtualservice
+  namespace: istioinaction
 spec:
   hosts:
-  - "*"
+  - "apiserver.istioinaction.io"
   gateways:
   - apigateway-gateway
   http:
