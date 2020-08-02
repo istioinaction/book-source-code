@@ -2,7 +2,6 @@ const jsonServer = require('json-server')
 const server = jsonServer.create()
 
 const data = require('./generate.js')
-const router = jsonServer.router(data())
 const middlewares = jsonServer.defaults({"bodyParser": true})
 
 var morgan = require('morgan')
@@ -13,7 +12,13 @@ const rewriter = jsonServer.rewriter({
     "/api/*": "/$1"
 })
 
-server.use(rewriter)
+let catalogItems = [{
+    "id": 0,
+    "color": "mint green",
+    "department": "Shoes",
+    "name": "Small Frozen Bike",
+    "price": "347.00"
+}]
 
 var blowups = {}
 
@@ -42,9 +47,25 @@ const blowupMiddleware = function(req, res, next){
                     }
                 }
                 else if (value.type == "latency") {
-                    console.log("Sending a latency blowup for " + value.latencyMs + "ms")
-                    setTimeout(() => { next() }, value.latencyMs);
+                    var sleep = value.latencyMs || 1000
+                    // if volatile is set then sleep fluctuates from 0 to the latency value
+                    if (value.volatile) {
+                        sleep = Math.floor(Math.random() * sleep); 
+                    }
+
+                    console.log("Sending a latency blowup for " + sleep + "ms")
+                    setTimeout(() => { next() }, sleep);
                     blownUp=true
+                }
+                else if (value.type == "drop") {
+                    var rando = Math.floor(Math.random() * 100);
+                    var percentage = value.percentage || 100
+                    console.log("rando is " + rando + " and percentage is " + percentage)
+                    if (rando <= percentage) {
+                        console.log("Dropping connection");
+                        req.socket.end();
+                        blownUp=true
+                    }
                 }
             }
 
@@ -55,7 +76,6 @@ const blowupMiddleware = function(req, res, next){
     if (!blownUp) {
         next();
     }
-
 }
 
 server.use(middlewares)
@@ -63,6 +83,16 @@ server.use(blowupMiddleware)
 
 server.get('/blowup', function(req, res){
     res.send(blowups);
+})
+
+server.get('/items', function(req, res){
+    res.send(catalogItems);
+})
+
+server.post('/items', function(req, res){
+    catalogItems.push(req.body)
+    res.status(201)
+    res.send();
 })
 
 server.post('/blowup', function (req,res) {
@@ -76,11 +106,6 @@ server.delete('/blowup', function(req,res){
     res.send("deleted blowup " + req.body.type);
 })
 
-
-server.use(router)
-
-
 server.listen(3000, () => {
     console.log('JSON Server is running')
 })
-
