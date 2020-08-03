@@ -1,6 +1,7 @@
 
 
 KUBE_RESOURCES := $(shell pwd)/install
+MINIKUBE := $(shell command -v minikube)
 
 
 
@@ -25,7 +26,13 @@ undeploy-apigateway-with-catalog:
 
 .PHONY: ingress-url
 ingress-url:
+ifdef MINIKUBE
 	@echo $(shell kubectl get pod -n istio-system -l istio=ingressgateway -o jsonpath='{.items[0].status.hostIP}'):$(shell kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+endif
+# docker-for-desktop uses localhost
+ifndef MINIKUBE 
+	@echo "localhost"
+endif
 
 .PHONY: ingress-pod
 ingress-pod:
