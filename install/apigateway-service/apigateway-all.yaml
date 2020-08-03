@@ -1,3 +1,22 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: apigateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: apigateway
+  name: apigateway
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: apigateway
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -15,6 +34,7 @@ spec:
       labels:
         app: apigateway
     spec:
+      serviceAccountName: apigateway
       containers:
       - env:
         - name: KUBERNETES_NAMESPACE
@@ -23,28 +43,10 @@ spec:
               fieldPath: metadata.namespace
         image: rinormaloku/apigateway:latest
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8081
-            scheme: HTTP
-          initialDelaySeconds: 180
-        name: spring-boot
+        name: apigateway
         ports:
         - containerPort: 8080
           name: http
           protocol: TCP
-        - containerPort: 9779
-          name: prometheus
-          protocol: TCP
-        - containerPort: 8778
-          name: jolokia
-          protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8081
-            scheme: HTTP
-          initialDelaySeconds: 10
         securityContext:
           privileged: false

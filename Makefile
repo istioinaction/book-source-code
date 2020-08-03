@@ -50,6 +50,10 @@ catalog-pod:
 sleep-pod:
 	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n default)
 
+.PHONY: statsd-pod
+statsd-pod:
+	@echo $(shell kubectl get pod -l run=statsd -o jsonpath={.items..metadata.name} -n istioinaction)
+
 .PHONY: get-demo-curl
 get-demo-curl:
 	@echo 'curl -H "Host: apigateway.istioinaction.io" http://$(shell make ingress-url)/api/products'

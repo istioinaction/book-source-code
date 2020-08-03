@@ -1,23 +1,20 @@
+const faker = require("faker")
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 
-const data = require('./generate.js')
 const middlewares = jsonServer.defaults({"bodyParser": true})
 
 var morgan = require('morgan')
 morgan.token('host', function (req, res) { return req.headers['host'] })
 server.use(morgan(':method :host :url :status :res[content-length] - :response-time ms'))
 
-const rewriter = jsonServer.rewriter({
-    "/api/*": "/$1"
-})
 
 let catalogItems = [{
-    "id": 0,
-    "color": "mint green",
-    "department": "Shoes",
-    "name": "Small Frozen Bike",
-    "price": "347.00"
+    "id": 0,              
+    "color": "teal",                 
+    "department": "Clothing",
+    "name": "Small Metal Shoes",
+    "price": "232.00"
 }]
 
 var blowups = {}
@@ -86,6 +83,11 @@ server.get('/blowup', function(req, res){
 })
 
 server.get('/items', function(req, res){
+    if (process.env.SHOW_IMAGE){
+        catalogItems.forEach(element => {
+            element.imageUrl = faker.image.imageUrl(); 
+        });
+    }
     res.send(catalogItems);
 })
 
