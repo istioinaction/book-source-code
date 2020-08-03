@@ -27,6 +27,22 @@ undeploy-apigateway-with-catalog:
 ingress-url:
 	@echo $(shell kubectl get pod -n istio-system -l istio=ingressgateway -o jsonpath='{.items[0].status.hostIP}'):$(shell kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
 
+.PHONY: ingress-pod
+ingress-pod:
+	@echo $(shell kubectl get pod -l app=istio-ingressgateway -o jsonpath={.items..metadata.name} -n istio-system)
+
+.PHONY: apigateway-pod
+apigateway-pod:
+	@echo $(shell kubectl get pod -l app=apigateway -o jsonpath={.items..metadata.name} -n istioinaction)
+
+.PHONY: catalog-pod
+catalog-pod:
+	@echo $(shell kubectl get pod -l app=catalog -o jsonpath={.items..metadata.name} -n istioinaction)
+
+.PHONY: sleep-pod
+sleep-pod:
+	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n default)
+
 .PHONY: get-demo-curl
 get-demo-curl:
 	@echo 'curl -H "Host: apigateway.istioinaction.io" http://$(shell make ingress-url)/api/products'
@@ -50,12 +66,14 @@ chapter8-setup-authn-authz: chapter8-setup-authn
 
 .PHONY: chapter8-cleanup
 chapter8-cleanup:
-	-kubectl delete authorizationpolicy --all -n istio-system
-	-kubectl delete authorizationpolicy --all -n istioinaction
-	-kubectl delete requestauthentication --all -n istio-system
-	-kubectl delete requestauthentication --all -n istioinaction
-	-kubectl delete -f chapters/chapter8/sleep.yaml -n default
-	-kubectl delete ns istioinaction
+	-kubectl delete authorizationpolicy --all -n istio-system 2> /dev/null || true
+	-kubectl delete authorizationpolicy --all -n istioinaction 2> /dev/null || true
+	-kubectl delete requestauthentication --all -n istio-system 2> /dev/null || true
+	-kubectl delete requestauthentication --all -n istioinaction 2> /dev/null || true
+	-kubectl delete peerauthentication --all -n istioinaction 2> /dev/null || true
+	-kubectl delete peerauthentication default -n istio-system 2> /dev/null || true
+	-kubectl delete -f chapters/chapter8/sleep.yaml -n default 2> /dev/null || true
+	-kubectl delete ns istioinaction 2> /dev/null || true
 
 #----------------------------------------------------------------------------------
 # Port forward Observability
