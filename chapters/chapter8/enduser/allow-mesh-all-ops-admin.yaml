@@ -1,0 +1,17 @@
+apiVersion: "security.istio.io/v1beta1"
+kind: "AuthorizationPolicy"
+metadata:
+  name: "allow-mesh-all-ops-admin"
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["auth@istioinaction.io/*"]
+    when:
+    - key: request.auth.claims[group]
+      values: ["admin"]

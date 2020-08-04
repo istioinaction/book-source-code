@@ -1,31 +1,28 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
-	"github.com/julienschmidt/httprouter"
-	"net/http"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"strings"
+
+	"github.com/julienschmidt/httprouter"
 )
 
-func Catalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var host string = os.Getenv("CATALOG_SERVICE_HOST")
-	var port string = os.Getenv("CATALOG_SERVICE_PORT")
-	catalogUrl := "http://"+host+":"+port+"/items"
+func GetCatalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	var host = os.Getenv("CATALOG_SERVICE_HOST")
+	var port = os.Getenv("CATALOG_SERVICE_PORT")
+	catalogUrl := "http://" + host + ":" + port + "/items"
 
 	client := &http.Client{}
 
 	req, err := http.NewRequest("GET", catalogUrl, nil)
+	check(err)
 
-	for name, value := range r.Header {
-		if strings.HasPrefix(strings.ToLower(name), "x-") {
-			req.Header.Add(name, value[0])
-			fmt.Printf("Adding header to request: %s=%s", name, value[0])
-		}
-	}
-
+	req.Header = extractHeaders(r)
 
 	response, err := client.Do(req)
 
@@ -33,13 +30,58 @@ func Catalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		fmt.Printf("The HTTP request failed calling Catalog service with error %s\n", err)
 	}
 
-	if(response.StatusCode != 200) {
+	if response.StatusCode != 200 {
 		http.Error(w, "error calling Catalog service", http.StatusInternalServerError)
-	}else {
+	} else {
 		data, _ := ioutil.ReadAll(response.Body)
 		fmt.Fprint(w, string(data))
 	}
+}
 
+func CreateCatalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	var host string = os.Getenv("CATALOG_SERVICE_HOST")
+	var port string = os.Getenv("CATALOG_SERVICE_PORT")
+	catalogUrl := "http://" + host + ":" + port + "/items"
+
+	client := &http.Client{}
+
+	body, err := ioutil.ReadAll(r.Body)
+	req, err := http.NewRequest("POST", catalogUrl, bytes.NewBuffer(body))
+	check(err)
+
+	req.Header = extractHeaders(r)
+	req.Header.Add("Content-Type", "application/json")
+
+	response, err := client.Do(req)
+
+	if err != nil {
+		log.Printf("The HTTP request failed calling Catalog service with error %s\n", err)
+	}
+
+	if response.StatusCode != 201 {
+		http.Error(w, "error calling Catalog service", http.StatusInternalServerError)
+	} else {
+		data, _ := ioutil.ReadAll(response.Body)
+		fmt.Fprint(w, string(data))
+	}
+}
+
+func extractHeaders(r *http.Request) http.Header {
+	customHeaders := http.Header{}
+	log.Println(r.Header)
+	for name, value := range r.Header {
+		if strings.HasPrefix(strings.ToLower(name), "x-") ||
+			strings.HasPrefix(name, "Authorization") {
+			customHeaders.Add(name, value[0])
+		}
+	}
+	return customHeaders
+}
+
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
 
 func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -48,7 +90,8 @@ func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func main() {
 	router := httprouter.New()
-	router.GET("/api/catalog", Catalog)
+	router.GET("/api/catalog", GetCatalog)
+	router.POST("/api/catalog", CreateCatalog)
 	router.GET("/hello/:name", Hello)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
