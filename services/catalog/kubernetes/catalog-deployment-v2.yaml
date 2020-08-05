@@ -26,7 +26,7 @@ spec:
               fieldPath: metadata.namespace
         - name: SHOW_IMAGE
           value: "true"
-        image: rinormaloku/catalog:latest
+        image: istioinaction/catalog:latest
         imagePullPolicy: IfNotPresent
         name: catalog
         ports:
