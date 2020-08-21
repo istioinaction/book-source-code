@@ -54,38 +54,6 @@ sleep-pod:
 statsd-pod:
 	@echo $(shell kubectl get pod -l run=statsd -o jsonpath={.items..metadata.name} -n istioinaction)
 
-.PHONY: ingress-pod
-ingress-pod:
-	@echo $(shell kubectl get pod -l app=istio-ingressgateway -o jsonpath={.items..metadata.name} -n istio-system)
-
-.PHONY: apigateway-pod
-apigateway-pod:
-	@echo $(shell kubectl get pod -l app=apigateway -o jsonpath={.items..metadata.name} -n istioinaction)
-
-.PHONY: catalog-pod
-catalog-pod:
-	@echo $(shell kubectl get pod -l app=catalog -o jsonpath={.items..metadata.name} -n istioinaction)
-
-.PHONY: sleep-pod
-sleep-pod:
-	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n default)
-
-.PHONY: ingress-pod
-ingress-pod:
-	@echo $(shell kubectl get pod -l app=istio-ingressgateway -o jsonpath={.items..metadata.name} -n istio-system)
-
-.PHONY: apigateway-pod
-apigateway-pod:
-	@echo $(shell kubectl get pod -l app=apigateway -o jsonpath={.items..metadata.name} -n istioinaction)
-
-.PHONY: catalog-pod
-catalog-pod:
-	@echo $(shell kubectl get pod -l app=catalog -o jsonpath={.items..metadata.name} -n istioinaction)
-
-.PHONY: sleep-pod
-sleep-pod:
-	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n default)
-
 .PHONY: get-demo-curl
 get-demo-curl:
 	@echo 'curl -H "Host: apigateway.istioinaction.io" http://$(shell make ingress-url)/api/products'
@@ -117,6 +85,27 @@ chapter8-cleanup:
 	-kubectl delete peerauthentication default -n istio-system 2> /dev/null || true
 	-kubectl delete -f chapters/chapter8/sleep.yaml -n default 2> /dev/null || true
 	-kubectl delete ns istioinaction 2> /dev/null || true
+
+.PHONY: chapter9-exercise-1-setup
+chapter9-exercise-1-setup:
+	-kubectl delete ns istioinaction 2> /dev/null || true
+	-kubectl -n istioinaction delete -f chapters/chapter9/catalog-destinationrule-v1-v2.yaml
+	-kubectl -n istioinaction delete -f chapters/chapter9/catalog-virtualservice-subsets-v1-v2.yaml
+	-kubectl -n istioinaction delete -f chapters/chapter9/catalog-gateway.yaml
+	-kubectl create ns istioinaction
+	-istioctl kube-inject -f services/catalog/kubernetes/catalog.yaml | kubectl -n istioinaction apply -f -
+	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-destinationrule-v1-v2.yaml
+	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-virtualservice-subsets-v1-v2.yaml
+	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-gateway.yaml
+
+.PHONY: chapter9-exercise-1-test
+chapter9-exercise-1-test:
+	-seq 1 10 | xargs -n 1 -I{} curl -H "Host: catalog.istioinaction.io" -w "\nRequest {}: Status Code %{http_code}\n\n" localhost/items
+
+.PHONY: chapter9-exercise-2-env-setup
+chapter9-exercise-2-env-setup:
+	-istioctl kube-inject -f services/catalog/kubernetes/catalog-deployment-v2.yaml | kubectl -n istioinaction apply -f -
+	-istioctl kube-inject -f services/catalog/kubernetes/catalog-deployment-v2.yaml | kubectl -n istioinaction apply -f <(istioctl kube-inject -f /chapters/chapter9/catalog-deployment-v2.yaml)
 
 #----------------------------------------------------------------------------------
 # Port forward Observability
