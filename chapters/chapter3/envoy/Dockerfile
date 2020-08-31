@@ -1,4 +1,4 @@
-FROM envoyproxy/envoy:v1.11.0
+FROM envoyproxy/envoy:v1.15.0
 MAINTAINER Christian Posta (christian.posta@gmail.com)
 
 COPY conf/simple.yaml /etc/envoy
