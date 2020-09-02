@@ -1,22 +1,3 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: apigateway
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: apigateway
-  name: apigateway
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8080
-  selector:
-    app: apigateway
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,14 +15,21 @@ spec:
       labels:
         app: apigateway
     spec:
-      serviceAccountName: apigateway
       containers:
       - env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"    
+        - name: "UPSTREAM_URIS"
+          value: "http://catalog:80/items"     
+        - name: "NAME"
+          value: "webapi"      
+        - name: "MESSAGE"
+          value: "Hello!"                     
         - name: KUBERNETES_NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: istioinaction/apigateway:latest
+        image: nicholasjackson/fake-service:v0.7.8
         imagePullPolicy: IfNotPresent
         name: apigateway
         ports:

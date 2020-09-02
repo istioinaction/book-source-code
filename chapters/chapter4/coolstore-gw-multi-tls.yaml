@@ -12,8 +12,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
-      privateKey: /etc/istio/ingressgateway-certs/tls.key
+      credentialName: apiserver-credential
     hosts:
     - "apiserver.istioinaction.io"
   - port:
@@ -22,7 +21,9 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      serverCertificate: /etc/istio/catalog-ingressgateway-certs/tls.crt
-      privateKey: /etc/istio/catalog-ingressgateway-certs/tls.key
+      credentialName: catalog-credential
     hosts:
     - "catalog.istioinaction.io"
+
+
+

@@ -18,8 +18,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
-      privateKey: /etc/istio/ingressgateway-certs/tls.key
+      credentialName: apiserver-credential
     hosts:
     - "apiserver.istioinaction.io"
 
