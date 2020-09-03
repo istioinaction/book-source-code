@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: sni-passthrough-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 31400
+      name: tcp-sni-1
+      protocol: TLS
+    hosts:
+    - "simple-sni-1.istioinaction.io"
+    tls:
+      mode: PASSTHROUGH
+  - port:
+      number: 31400
+      name: tcp-sni-2
+      protocol: TLS
+    hosts:
+    - "simple-sni-2.istioinaction.io"
+    tls:
+      mode: PASSTHROUGH      

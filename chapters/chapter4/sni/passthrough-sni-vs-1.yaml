@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: simple-sni-1-vs
+spec:
+  hosts:
+  - "simple-sni-1.istioinaction.io"
+  gateways:
+  - sni-passthrough-gateway
+  tls:
+  - match:
+    - port: 31400
+      sniHosts:
+      - simple-sni-1.istioinaction.io
+    route:
+    - destination:
+        host: simple-tls-service-1
+        port:
+          number: 80
