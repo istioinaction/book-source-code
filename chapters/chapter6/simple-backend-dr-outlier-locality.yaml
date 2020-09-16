@@ -5,6 +5,13 @@ metadata:
 spec:
   host: simple-backend.istioinaction.svc.cluster.local
   trafficPolicy:
+    loadBalancer:
+      localityLbSetting:
+        distribute:
+        - from: us-west1/us-west1-a/*
+          to:
+            "us-west1/us-west1-a/*": 70
+            "us-west1/us-west1-b/*": 30
     connectionPool:      
       http:
         http2MaxRequests: 10
