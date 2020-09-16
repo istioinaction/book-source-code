@@ -1,0 +1,103 @@
+{
+  "RunType": "HTTP",
+  "Labels": "random",
+  "StartTime": "2020-09-15T16:25:33.197586-07:00",
+  "RequestedQPS": "1000",
+  "RequestedDuration": "1m0s",
+  "ActualQPS": 23.093520495021746,
+  "ActualDuration": 60926180584,
+  "NumThreads": 10,
+  "Version": "1.6.8",
+  "DurationHistogram": {
+    "Count": 1407,
+    "Min": 0.163015666,
+    "Max": 1.04431738,
+    "Sum": 602.742928087,
+    "Avg": 0.42838871932267236,
+    "StdDev": 0.39071038786108536,
+    "Data": [
+      {
+        "Start": 0.163015666,
+        "End": 0.2,
+        "Percent": 69.7228144989339,
+        "Count": 981
+      },
+      {
+        "Start": 1,
+        "End": 1.04431738,
+        "Percent": 100,
+        "Count": 426
+      }
+    ],
+    "Percentiles": [
+      {
+        "Percentile": 50,
+        "Value": 0.18952739521938777
+      },
+      {
+        "Percentile": 75,
+        "Value": 1.0077243320774647
+      },
+      {
+        "Percentile": 90,
+        "Value": 1.029680160830986
+      },
+      {
+        "Percentile": 99,
+        "Value": 1.0428536580830987
+      },
+      {
+        "Percentile": 99.9,
+        "Value": 1.04417100780831
+      }
+    ]
+  },
+  "Exactly": 0,
+  "Jitter": true,
+  "RetCodes": {
+    "200": 1407
+  },
+  "Sizes": {
+    "Count": 1407,
+    "Min": 1065,
+    "Max": 1070,
+    "Sum": 1503215,
+    "Avg": 1068.3830845771145,
+    "StdDev": 1.0497630330975103,
+    "Data": [
+      {
+        "Start": 1065,
+        "End": 1070,
+        "Percent": 100,
+        "Count": 1407
+      }
+    ],
+    "Percentiles": null
+  },
+  "HeaderSizes": {
+    "Count": 1407,
+    "Min": 175,
+    "Max": 176,
+    "Sum": 246651,
+    "Avg": 175.30277185501066,
+    "StdDev": 0.45945735256446096,
+    "Data": [
+      {
+        "Start": 175,
+        "End": 175,
+        "Percent": 69.7228144989339,
+        "Count": 981
+      },
+      {
+        "Start": 175,
+        "End": 176,
+        "Percent": 100,
+        "Count": 426
+      }
+    ],
+    "Percentiles": null
+  },
+  "URL": "http://localhost",
+  "SocketCount": 10,
+  "AbortOn": 0
+}
