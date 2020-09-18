@@ -1,0 +1,15 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: simple-backend-vs
+spec:
+  hosts:
+  - simple-backend
+  http:
+  - route:
+    - destination:
+        host: simple-backend
+    retries:
+      attempts: 2
+      retryOn: 5xx,retriable-status-codes

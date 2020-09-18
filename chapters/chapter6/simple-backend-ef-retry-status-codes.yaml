@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: simple-backend-retry-status-codes
+  namespace: istioinaction
+spec:
+  workloadSelector:
+    labels:
+      app: simple-web
+  configPatches:
+  - applyTo: HTTP_ROUTE
+    match:
+      context: SIDECAR_OUTBOUND
+      routeConfiguration:
+        vhost:
+          name: "simple-backend.istioinaction.svc.cluster.local:80"          
+    patch:
+      operation: MERGE
+      value:
+        route:
+          retry_policy:
+            retry_back_off: 
+              base_interval: 50ms
+            retriable_status_codes: 
+            - 408
+            - 400
+          
+
+

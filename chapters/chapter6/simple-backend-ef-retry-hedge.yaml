@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: simple-backend-retry-hedge
+  namespace: istioinaction
+spec:
+  workloadSelector:
+    labels:
+      app: simple-web
+  configPatches:
+  - applyTo: VIRTUAL_HOST
+    match:
+      context: SIDECAR_OUTBOUND
+      routeConfiguration:
+        vhost:
+          name: "simple-backend.istioinaction.svc.cluster.local:80"          
+    patch:
+      operation: MERGE
+      value:
+        hedge_policy:
+          hedge_on_per_try_timeout: true
+          
+
+
