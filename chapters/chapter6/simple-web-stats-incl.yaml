@@ -31,6 +31,8 @@ spec:
       app: simple-web
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/statsInclusionPrefixes: "cluster.outbound|80||simple-backend.istioinaction.svc.cluster.local"
       labels:
         app: simple-web
     spec:
