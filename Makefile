@@ -34,6 +34,9 @@ ifndef MINIKUBE
 	@echo "localhost"
 endif
 
+istiod-pod:
+	@echo $(shell kubectl get pod -l app=istiod -o jsonpath={.items..metadata.name} -n istio-system)
+
 .PHONY: ingress-pod
 ingress-pod:
 	@echo $(shell kubectl get pod -l app=istio-ingressgateway -o jsonpath={.items..metadata.name} -n istio-system)
@@ -44,7 +47,7 @@ apigateway-pod:
 
 .PHONY: catalog-pod
 catalog-pod:
-	@echo $(shell kubectl get pod -l app=catalog -o jsonpath={.items..metadata.name} -n istioinaction)
+	@echo $(shell kubectl get pod -l app=catalog -o jsonpath={.items..metadata.name} -n istioinaction | cut -d ' ' -f 1)
 
 .PHONY: sleep-pod
 sleep-pod:
@@ -86,26 +89,18 @@ chapter8-cleanup:
 	-kubectl delete -f chapters/chapter8/sleep.yaml -n default 2> /dev/null || true
 	-kubectl delete ns istioinaction 2> /dev/null || true
 
-.PHONY: chapter9-exercise-1-setup
-chapter9-exercise-1-setup:
+.PHONY: chapter9-traffic-management
+chapter9-traffic-management:
 	-kubectl delete ns istioinaction 2> /dev/null || true
-	-kubectl -n istioinaction delete -f chapters/chapter9/catalog-destinationrule-v1-v2.yaml
-	-kubectl -n istioinaction delete -f chapters/chapter9/catalog-virtualservice-subsets-v1-v2.yaml
-	-kubectl -n istioinaction delete -f chapters/chapter9/catalog-gateway.yaml
 	-kubectl create ns istioinaction
 	-istioctl kube-inject -f services/catalog/kubernetes/catalog.yaml | kubectl -n istioinaction apply -f -
-	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-destinationrule-v1-v2.yaml
+	-istioctl kube-inject -f chapters/chapter9/catalog-deployment-v2.yaml | kubectl -n istioinaction apply -f -
 	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-virtualservice-subsets-v1-v2.yaml
 	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-gateway.yaml
 
-.PHONY: chapter9-exercise-1-test
-chapter9-exercise-1-test:
-	-seq 1 10 | xargs -n 1 -I{} curl -H "Host: catalog.istioinaction.io" -w "\nRequest {}: Status Code %{http_code}\n\n" localhost/items
-
-.PHONY: chapter9-exercise-2-env-setup
-chapter9-exercise-2-env-setup:
-	-istioctl kube-inject -f services/catalog/kubernetes/catalog-deployment-v2.yaml | kubectl -n istioinaction apply -f -
-	-istioctl kube-inject -f services/catalog/kubernetes/catalog-deployment-v2.yaml | kubectl -n istioinaction apply -f <(istioctl kube-inject -f /chapters/chapter9/catalog-deployment-v2.yaml)
+.PHONY: chapter9-telemetry
+chapter9-telemetry: chapter9-traffic-management
+	-kubectl patch vs catalog-v1-v2 -n istioinaction --type json -p '[{"op": "add", "path": "/spec/http/0/timeout", "value": "0.5s"}]' 
 
 #----------------------------------------------------------------------------------
 # Port forward Observability
