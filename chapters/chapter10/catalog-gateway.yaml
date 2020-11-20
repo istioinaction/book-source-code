@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: catalog-gateway
+  namespace: istioinaction
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "catalog.istioinaction.io"
+    port:
+      number: 80
+      name: http
+      protocol: HTTP
