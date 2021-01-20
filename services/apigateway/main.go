@@ -13,9 +13,8 @@ import (
 )
 
 func GetCatalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var host = os.Getenv("CATALOG_SERVICE_HOST")
 	var port = os.Getenv("CATALOG_SERVICE_PORT")
-	catalogUrl := "http://" + host + ":" + port + "/items"
+	catalogUrl := "http://catalog" + ":" + port + "/items"
 
 	client := &http.Client{}
 
@@ -39,9 +38,8 @@ func GetCatalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func CreateCatalog(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var host string = os.Getenv("CATALOG_SERVICE_HOST")
-	var port string = os.Getenv("CATALOG_SERVICE_PORT")
-	catalogUrl := "http://" + host + ":" + port + "/items"
+	var port = os.Getenv("CATALOG_SERVICE_PORT")
+	catalogUrl := "http://catalog" + ":" + port + "/items"
 
 	client := &http.Client{}
 
