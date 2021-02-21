@@ -1,0 +1,9200 @@
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service510b-0-gateway
+spec:
+  servers:
+    - hosts:
+        - "service510b-0.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service510b-0
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service510b-0
+spec:
+  hosts:
+  - "service510b-0.istioinaction.io"
+  gateways:
+  - "service510b-0-gateway"
+  http:
+  - route:
+    - destination:
+        host: service510b-0.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec7dc-1-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec7dc-1.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec7dc-1
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec7dc-1
+spec:
+  hosts:
+  - "servicec7dc-1.istioinaction.io"
+  gateways:
+  - "servicec7dc-1-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec7dc-1.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviced38c-2-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviced38c-2.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviced38c-2
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviced38c-2
+spec:
+  hosts:
+  - "serviced38c-2.istioinaction.io"
+  gateways:
+  - "serviced38c-2-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviced38c-2.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7a3e-3-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7a3e-3.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7a3e-3
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7a3e-3
+spec:
+  hosts:
+  - "service7a3e-3.istioinaction.io"
+  gateways:
+  - "service7a3e-3-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7a3e-3.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviced79b-4-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviced79b-4.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviced79b-4
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviced79b-4
+spec:
+  hosts:
+  - "serviced79b-4.istioinaction.io"
+  gateways:
+  - "serviced79b-4-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviced79b-4.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service810d-5-gateway
+spec:
+  servers:
+    - hosts:
+        - "service810d-5.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service810d-5
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service810d-5
+spec:
+  hosts:
+  - "service810d-5.istioinaction.io"
+  gateways:
+  - "service810d-5-gateway"
+  http:
+  - route:
+    - destination:
+        host: service810d-5.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicefce2-6-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicefce2-6.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicefce2-6
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicefce2-6
+spec:
+  hosts:
+  - "servicefce2-6.istioinaction.io"
+  gateways:
+  - "servicefce2-6-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicefce2-6.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceffaa-7-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceffaa-7.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceffaa-7
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceffaa-7
+spec:
+  hosts:
+  - "serviceffaa-7.istioinaction.io"
+  gateways:
+  - "serviceffaa-7-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceffaa-7.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicedd66-8-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicedd66-8.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicedd66-8
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicedd66-8
+spec:
+  hosts:
+  - "servicedd66-8.istioinaction.io"
+  gateways:
+  - "servicedd66-8-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicedd66-8.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviced166-9-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviced166-9.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviced166-9
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviced166-9
+spec:
+  hosts:
+  - "serviced166-9.istioinaction.io"
+  gateways:
+  - "serviced166-9-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviced166-9.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9089-10-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9089-10.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9089-10
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9089-10
+spec:
+  hosts:
+  - "service9089-10.istioinaction.io"
+  gateways:
+  - "service9089-10-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9089-10.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service0924-11-gateway
+spec:
+  servers:
+    - hosts:
+        - "service0924-11.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service0924-11
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service0924-11
+spec:
+  hosts:
+  - "service0924-11.istioinaction.io"
+  gateways:
+  - "service0924-11-gateway"
+  http:
+  - route:
+    - destination:
+        host: service0924-11.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8933-12-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8933-12.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8933-12
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8933-12
+spec:
+  hosts:
+  - "service8933-12.istioinaction.io"
+  gateways:
+  - "service8933-12-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8933-12.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service913b-13-gateway
+spec:
+  servers:
+    - hosts:
+        - "service913b-13.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service913b-13
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service913b-13
+spec:
+  hosts:
+  - "service913b-13.istioinaction.io"
+  gateways:
+  - "service913b-13-gateway"
+  http:
+  - route:
+    - destination:
+        host: service913b-13.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7e13-14-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7e13-14.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7e13-14
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7e13-14
+spec:
+  hosts:
+  - "service7e13-14.istioinaction.io"
+  gateways:
+  - "service7e13-14-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7e13-14.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service2976-15-gateway
+spec:
+  servers:
+    - hosts:
+        - "service2976-15.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service2976-15
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service2976-15
+spec:
+  hosts:
+  - "service2976-15.istioinaction.io"
+  gateways:
+  - "service2976-15-gateway"
+  http:
+  - route:
+    - destination:
+        host: service2976-15.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service533b-16-gateway
+spec:
+  servers:
+    - hosts:
+        - "service533b-16.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service533b-16
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service533b-16
+spec:
+  hosts:
+  - "service533b-16.istioinaction.io"
+  gateways:
+  - "service533b-16-gateway"
+  http:
+  - route:
+    - destination:
+        host: service533b-16.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec6a3-17-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec6a3-17.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec6a3-17
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec6a3-17
+spec:
+  hosts:
+  - "servicec6a3-17.istioinaction.io"
+  gateways:
+  - "servicec6a3-17-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec6a3-17.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service77a7-18-gateway
+spec:
+  servers:
+    - hosts:
+        - "service77a7-18.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service77a7-18
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service77a7-18
+spec:
+  hosts:
+  - "service77a7-18.istioinaction.io"
+  gateways:
+  - "service77a7-18-gateway"
+  http:
+  - route:
+    - destination:
+        host: service77a7-18.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service88fa-19-gateway
+spec:
+  servers:
+    - hosts:
+        - "service88fa-19.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service88fa-19
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service88fa-19
+spec:
+  hosts:
+  - "service88fa-19.istioinaction.io"
+  gateways:
+  - "service88fa-19-gateway"
+  http:
+  - route:
+    - destination:
+        host: service88fa-19.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicebf68-20-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicebf68-20.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicebf68-20
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicebf68-20
+spec:
+  hosts:
+  - "servicebf68-20.istioinaction.io"
+  gateways:
+  - "servicebf68-20-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicebf68-20.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea79e-21-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea79e-21.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea79e-21
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea79e-21
+spec:
+  hosts:
+  - "servicea79e-21.istioinaction.io"
+  gateways:
+  - "servicea79e-21-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea79e-21.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceaae4-22-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceaae4-22.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceaae4-22
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceaae4-22
+spec:
+  hosts:
+  - "serviceaae4-22.istioinaction.io"
+  gateways:
+  - "serviceaae4-22-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceaae4-22.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceeece-23-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceeece-23.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceeece-23
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceeece-23
+spec:
+  hosts:
+  - "serviceeece-23.istioinaction.io"
+  gateways:
+  - "serviceeece-23-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceeece-23.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service13bf-24-gateway
+spec:
+  servers:
+    - hosts:
+        - "service13bf-24.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service13bf-24
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service13bf-24
+spec:
+  hosts:
+  - "service13bf-24.istioinaction.io"
+  gateways:
+  - "service13bf-24-gateway"
+  http:
+  - route:
+    - destination:
+        host: service13bf-24.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceeaa2-25-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceeaa2-25.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceeaa2-25
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceeaa2-25
+spec:
+  hosts:
+  - "serviceeaa2-25.istioinaction.io"
+  gateways:
+  - "serviceeaa2-25-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceeaa2-25.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1c53-26-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1c53-26.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1c53-26
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1c53-26
+spec:
+  hosts:
+  - "service1c53-26.istioinaction.io"
+  gateways:
+  - "service1c53-26-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1c53-26.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicefb60-27-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicefb60-27.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicefb60-27
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicefb60-27
+spec:
+  hosts:
+  - "servicefb60-27.istioinaction.io"
+  gateways:
+  - "servicefb60-27-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicefb60-27.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec7b9-28-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec7b9-28.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec7b9-28
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec7b9-28
+spec:
+  hosts:
+  - "servicec7b9-28.istioinaction.io"
+  gateways:
+  - "servicec7b9-28-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec7b9-28.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service59c4-29-gateway
+spec:
+  servers:
+    - hosts:
+        - "service59c4-29.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service59c4-29
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service59c4-29
+spec:
+  hosts:
+  - "service59c4-29.istioinaction.io"
+  gateways:
+  - "service59c4-29-gateway"
+  http:
+  - route:
+    - destination:
+        host: service59c4-29.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9c7b-30-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9c7b-30.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9c7b-30
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9c7b-30
+spec:
+  hosts:
+  - "service9c7b-30.istioinaction.io"
+  gateways:
+  - "service9c7b-30-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9c7b-30.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service15cc-31-gateway
+spec:
+  servers:
+    - hosts:
+        - "service15cc-31.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service15cc-31
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service15cc-31
+spec:
+  hosts:
+  - "service15cc-31.istioinaction.io"
+  gateways:
+  - "service15cc-31-gateway"
+  http:
+  - route:
+    - destination:
+        host: service15cc-31.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceebf4-32-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceebf4-32.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceebf4-32
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceebf4-32
+spec:
+  hosts:
+  - "serviceebf4-32.istioinaction.io"
+  gateways:
+  - "serviceebf4-32-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceebf4-32.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceac1b-33-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceac1b-33.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceac1b-33
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceac1b-33
+spec:
+  hosts:
+  - "serviceac1b-33.istioinaction.io"
+  gateways:
+  - "serviceac1b-33-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceac1b-33.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea2f0-34-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea2f0-34.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea2f0-34
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea2f0-34
+spec:
+  hosts:
+  - "servicea2f0-34.istioinaction.io"
+  gateways:
+  - "servicea2f0-34-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea2f0-34.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceeb01-35-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceeb01-35.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceeb01-35
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceeb01-35
+spec:
+  hosts:
+  - "serviceeb01-35.istioinaction.io"
+  gateways:
+  - "serviceeb01-35-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceeb01-35.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee18b-36-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee18b-36.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee18b-36
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee18b-36
+spec:
+  hosts:
+  - "servicee18b-36.istioinaction.io"
+  gateways:
+  - "servicee18b-36-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee18b-36.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5d17-37-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5d17-37.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5d17-37
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5d17-37
+spec:
+  hosts:
+  - "service5d17-37.istioinaction.io"
+  gateways:
+  - "service5d17-37-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5d17-37.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8e71-38-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8e71-38.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8e71-38
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8e71-38
+spec:
+  hosts:
+  - "service8e71-38.istioinaction.io"
+  gateways:
+  - "service8e71-38-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8e71-38.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7f41-39-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7f41-39.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7f41-39
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7f41-39
+spec:
+  hosts:
+  - "service7f41-39.istioinaction.io"
+  gateways:
+  - "service7f41-39-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7f41-39.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4a88-40-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4a88-40.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4a88-40
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4a88-40
+spec:
+  hosts:
+  - "service4a88-40.istioinaction.io"
+  gateways:
+  - "service4a88-40-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4a88-40.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7542-41-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7542-41.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7542-41
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7542-41
+spec:
+  hosts:
+  - "service7542-41.istioinaction.io"
+  gateways:
+  - "service7542-41-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7542-41.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee4ff-42-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee4ff-42.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee4ff-42
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee4ff-42
+spec:
+  hosts:
+  - "servicee4ff-42.istioinaction.io"
+  gateways:
+  - "servicee4ff-42-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee4ff-42.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service91e7-43-gateway
+spec:
+  servers:
+    - hosts:
+        - "service91e7-43.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service91e7-43
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service91e7-43
+spec:
+  hosts:
+  - "service91e7-43.istioinaction.io"
+  gateways:
+  - "service91e7-43-gateway"
+  http:
+  - route:
+    - destination:
+        host: service91e7-43.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee3e4-44-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee3e4-44.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee3e4-44
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee3e4-44
+spec:
+  hosts:
+  - "servicee3e4-44.istioinaction.io"
+  gateways:
+  - "servicee3e4-44-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee3e4-44.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicebd93-45-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicebd93-45.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicebd93-45
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicebd93-45
+spec:
+  hosts:
+  - "servicebd93-45.istioinaction.io"
+  gateways:
+  - "servicebd93-45-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicebd93-45.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicef01a-46-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicef01a-46.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicef01a-46
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicef01a-46
+spec:
+  hosts:
+  - "servicef01a-46.istioinaction.io"
+  gateways:
+  - "servicef01a-46-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicef01a-46.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service39a8-47-gateway
+spec:
+  servers:
+    - hosts:
+        - "service39a8-47.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service39a8-47
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service39a8-47
+spec:
+  hosts:
+  - "service39a8-47.istioinaction.io"
+  gateways:
+  - "service39a8-47-gateway"
+  http:
+  - route:
+    - destination:
+        host: service39a8-47.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service71be-48-gateway
+spec:
+  servers:
+    - hosts:
+        - "service71be-48.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service71be-48
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service71be-48
+spec:
+  hosts:
+  - "service71be-48.istioinaction.io"
+  gateways:
+  - "service71be-48-gateway"
+  http:
+  - route:
+    - destination:
+        host: service71be-48.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee061-49-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee061-49.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee061-49
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee061-49
+spec:
+  hosts:
+  - "servicee061-49.istioinaction.io"
+  gateways:
+  - "servicee061-49-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee061-49.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicecece-50-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicecece-50.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicecece-50
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicecece-50
+spec:
+  hosts:
+  - "servicecece-50.istioinaction.io"
+  gateways:
+  - "servicecece-50-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicecece-50.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9218-51-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9218-51.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9218-51
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9218-51
+spec:
+  hosts:
+  - "service9218-51.istioinaction.io"
+  gateways:
+  - "service9218-51-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9218-51.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service0532-52-gateway
+spec:
+  servers:
+    - hosts:
+        - "service0532-52.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service0532-52
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service0532-52
+spec:
+  hosts:
+  - "service0532-52.istioinaction.io"
+  gateways:
+  - "service0532-52-gateway"
+  http:
+  - route:
+    - destination:
+        host: service0532-52.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service25d0-53-gateway
+spec:
+  servers:
+    - hosts:
+        - "service25d0-53.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service25d0-53
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service25d0-53
+spec:
+  hosts:
+  - "service25d0-53.istioinaction.io"
+  gateways:
+  - "service25d0-53-gateway"
+  http:
+  - route:
+    - destination:
+        host: service25d0-53.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceb19a-54-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceb19a-54.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceb19a-54
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceb19a-54
+spec:
+  hosts:
+  - "serviceb19a-54.istioinaction.io"
+  gateways:
+  - "serviceb19a-54-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceb19a-54.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service944b-55-gateway
+spec:
+  servers:
+    - hosts:
+        - "service944b-55.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service944b-55
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service944b-55
+spec:
+  hosts:
+  - "service944b-55.istioinaction.io"
+  gateways:
+  - "service944b-55-gateway"
+  http:
+  - route:
+    - destination:
+        host: service944b-55.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicef9ba-56-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicef9ba-56.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicef9ba-56
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicef9ba-56
+spec:
+  hosts:
+  - "servicef9ba-56.istioinaction.io"
+  gateways:
+  - "servicef9ba-56-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicef9ba-56.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service3b15-57-gateway
+spec:
+  servers:
+    - hosts:
+        - "service3b15-57.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service3b15-57
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service3b15-57
+spec:
+  hosts:
+  - "service3b15-57.istioinaction.io"
+  gateways:
+  - "service3b15-57-gateway"
+  http:
+  - route:
+    - destination:
+        host: service3b15-57.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea018-58-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea018-58.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea018-58
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea018-58
+spec:
+  hosts:
+  - "servicea018-58.istioinaction.io"
+  gateways:
+  - "servicea018-58-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea018-58.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9c55-59-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9c55-59.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9c55-59
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9c55-59
+spec:
+  hosts:
+  - "service9c55-59.istioinaction.io"
+  gateways:
+  - "service9c55-59-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9c55-59.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service76d5-60-gateway
+spec:
+  servers:
+    - hosts:
+        - "service76d5-60.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service76d5-60
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service76d5-60
+spec:
+  hosts:
+  - "service76d5-60.istioinaction.io"
+  gateways:
+  - "service76d5-60-gateway"
+  http:
+  - route:
+    - destination:
+        host: service76d5-60.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7736-61-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7736-61.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7736-61
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7736-61
+spec:
+  hosts:
+  - "service7736-61.istioinaction.io"
+  gateways:
+  - "service7736-61-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7736-61.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service0039-62-gateway
+spec:
+  servers:
+    - hosts:
+        - "service0039-62.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service0039-62
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service0039-62
+spec:
+  hosts:
+  - "service0039-62.istioinaction.io"
+  gateways:
+  - "service0039-62-gateway"
+  http:
+  - route:
+    - destination:
+        host: service0039-62.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5777-63-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5777-63.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5777-63
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5777-63
+spec:
+  hosts:
+  - "service5777-63.istioinaction.io"
+  gateways:
+  - "service5777-63-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5777-63.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4666-64-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4666-64.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4666-64
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4666-64
+spec:
+  hosts:
+  - "service4666-64.istioinaction.io"
+  gateways:
+  - "service4666-64-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4666-64.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceec93-65-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceec93-65.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceec93-65
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceec93-65
+spec:
+  hosts:
+  - "serviceec93-65.istioinaction.io"
+  gateways:
+  - "serviceec93-65-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceec93-65.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceaaf5-66-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceaaf5-66.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceaaf5-66
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceaaf5-66
+spec:
+  hosts:
+  - "serviceaaf5-66.istioinaction.io"
+  gateways:
+  - "serviceaaf5-66-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceaaf5-66.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service823d-67-gateway
+spec:
+  servers:
+    - hosts:
+        - "service823d-67.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service823d-67
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service823d-67
+spec:
+  hosts:
+  - "service823d-67.istioinaction.io"
+  gateways:
+  - "service823d-67-gateway"
+  http:
+  - route:
+    - destination:
+        host: service823d-67.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9745-68-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9745-68.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9745-68
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9745-68
+spec:
+  hosts:
+  - "service9745-68.istioinaction.io"
+  gateways:
+  - "service9745-68-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9745-68.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4a7d-69-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4a7d-69.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4a7d-69
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4a7d-69
+spec:
+  hosts:
+  - "service4a7d-69.istioinaction.io"
+  gateways:
+  - "service4a7d-69-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4a7d-69.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service6b4e-70-gateway
+spec:
+  servers:
+    - hosts:
+        - "service6b4e-70.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service6b4e-70
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service6b4e-70
+spec:
+  hosts:
+  - "service6b4e-70.istioinaction.io"
+  gateways:
+  - "service6b4e-70-gateway"
+  http:
+  - route:
+    - destination:
+        host: service6b4e-70.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7b1c-71-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7b1c-71.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7b1c-71
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7b1c-71
+spec:
+  hosts:
+  - "service7b1c-71.istioinaction.io"
+  gateways:
+  - "service7b1c-71-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7b1c-71.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee797-72-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee797-72.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee797-72
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee797-72
+spec:
+  hosts:
+  - "servicee797-72.istioinaction.io"
+  gateways:
+  - "servicee797-72-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee797-72.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service3c1c-73-gateway
+spec:
+  servers:
+    - hosts:
+        - "service3c1c-73.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service3c1c-73
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service3c1c-73
+spec:
+  hosts:
+  - "service3c1c-73.istioinaction.io"
+  gateways:
+  - "service3c1c-73-gateway"
+  http:
+  - route:
+    - destination:
+        host: service3c1c-73.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceded3-74-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceded3-74.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceded3-74
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceded3-74
+spec:
+  hosts:
+  - "serviceded3-74.istioinaction.io"
+  gateways:
+  - "serviceded3-74-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceded3-74.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service236a-75-gateway
+spec:
+  servers:
+    - hosts:
+        - "service236a-75.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service236a-75
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service236a-75
+spec:
+  hosts:
+  - "service236a-75.istioinaction.io"
+  gateways:
+  - "service236a-75-gateway"
+  http:
+  - route:
+    - destination:
+        host: service236a-75.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service07b1-76-gateway
+spec:
+  servers:
+    - hosts:
+        - "service07b1-76.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service07b1-76
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service07b1-76
+spec:
+  hosts:
+  - "service07b1-76.istioinaction.io"
+  gateways:
+  - "service07b1-76-gateway"
+  http:
+  - route:
+    - destination:
+        host: service07b1-76.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5db3-77-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5db3-77.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5db3-77
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5db3-77
+spec:
+  hosts:
+  - "service5db3-77.istioinaction.io"
+  gateways:
+  - "service5db3-77-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5db3-77.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1568-78-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1568-78.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1568-78
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1568-78
+spec:
+  hosts:
+  - "service1568-78.istioinaction.io"
+  gateways:
+  - "service1568-78-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1568-78.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicedc0d-79-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicedc0d-79.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicedc0d-79
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicedc0d-79
+spec:
+  hosts:
+  - "servicedc0d-79.istioinaction.io"
+  gateways:
+  - "servicedc0d-79-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicedc0d-79.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service6945-80-gateway
+spec:
+  servers:
+    - hosts:
+        - "service6945-80.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service6945-80
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service6945-80
+spec:
+  hosts:
+  - "service6945-80.istioinaction.io"
+  gateways:
+  - "service6945-80-gateway"
+  http:
+  - route:
+    - destination:
+        host: service6945-80.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5b07-81-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5b07-81.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5b07-81
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5b07-81
+spec:
+  hosts:
+  - "service5b07-81.istioinaction.io"
+  gateways:
+  - "service5b07-81-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5b07-81.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceb9c6-82-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceb9c6-82.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceb9c6-82
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceb9c6-82
+spec:
+  hosts:
+  - "serviceb9c6-82.istioinaction.io"
+  gateways:
+  - "serviceb9c6-82-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceb9c6-82.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service172d-83-gateway
+spec:
+  servers:
+    - hosts:
+        - "service172d-83.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service172d-83
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service172d-83
+spec:
+  hosts:
+  - "service172d-83.istioinaction.io"
+  gateways:
+  - "service172d-83-gateway"
+  http:
+  - route:
+    - destination:
+        host: service172d-83.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7b0e-84-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7b0e-84.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7b0e-84
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7b0e-84
+spec:
+  hosts:
+  - "service7b0e-84.istioinaction.io"
+  gateways:
+  - "service7b0e-84-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7b0e-84.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service31f9-85-gateway
+spec:
+  servers:
+    - hosts:
+        - "service31f9-85.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service31f9-85
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service31f9-85
+spec:
+  hosts:
+  - "service31f9-85.istioinaction.io"
+  gateways:
+  - "service31f9-85-gateway"
+  http:
+  - route:
+    - destination:
+        host: service31f9-85.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea10d-86-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea10d-86.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea10d-86
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea10d-86
+spec:
+  hosts:
+  - "servicea10d-86.istioinaction.io"
+  gateways:
+  - "servicea10d-86-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea10d-86.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service309a-87-gateway
+spec:
+  servers:
+    - hosts:
+        - "service309a-87.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service309a-87
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service309a-87
+spec:
+  hosts:
+  - "service309a-87.istioinaction.io"
+  gateways:
+  - "service309a-87-gateway"
+  http:
+  - route:
+    - destination:
+        host: service309a-87.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8983-88-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8983-88.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8983-88
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8983-88
+spec:
+  hosts:
+  - "service8983-88.istioinaction.io"
+  gateways:
+  - "service8983-88-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8983-88.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicecc46-89-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicecc46-89.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicecc46-89
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicecc46-89
+spec:
+  hosts:
+  - "servicecc46-89.istioinaction.io"
+  gateways:
+  - "servicecc46-89-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicecc46-89.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea76d-90-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea76d-90.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea76d-90
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea76d-90
+spec:
+  hosts:
+  - "servicea76d-90.istioinaction.io"
+  gateways:
+  - "servicea76d-90-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea76d-90.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5fdf-91-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5fdf-91.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5fdf-91
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5fdf-91
+spec:
+  hosts:
+  - "service5fdf-91.istioinaction.io"
+  gateways:
+  - "service5fdf-91-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5fdf-91.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee3b1-92-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee3b1-92.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee3b1-92
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee3b1-92
+spec:
+  hosts:
+  - "servicee3b1-92.istioinaction.io"
+  gateways:
+  - "servicee3b1-92-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee3b1-92.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service599e-93-gateway
+spec:
+  servers:
+    - hosts:
+        - "service599e-93.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service599e-93
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service599e-93
+spec:
+  hosts:
+  - "service599e-93.istioinaction.io"
+  gateways:
+  - "service599e-93-gateway"
+  http:
+  - route:
+    - destination:
+        host: service599e-93.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee1ad-94-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee1ad-94.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee1ad-94
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee1ad-94
+spec:
+  hosts:
+  - "servicee1ad-94.istioinaction.io"
+  gateways:
+  - "servicee1ad-94-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee1ad-94.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4f39-95-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4f39-95.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4f39-95
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4f39-95
+spec:
+  hosts:
+  - "service4f39-95.istioinaction.io"
+  gateways:
+  - "service4f39-95-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4f39-95.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service274c-96-gateway
+spec:
+  servers:
+    - hosts:
+        - "service274c-96.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service274c-96
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service274c-96
+spec:
+  hosts:
+  - "service274c-96.istioinaction.io"
+  gateways:
+  - "service274c-96-gateway"
+  http:
+  - route:
+    - destination:
+        host: service274c-96.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9d20-97-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9d20-97.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9d20-97
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9d20-97
+spec:
+  hosts:
+  - "service9d20-97.istioinaction.io"
+  gateways:
+  - "service9d20-97-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9d20-97.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec9ac-98-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec9ac-98.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec9ac-98
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec9ac-98
+spec:
+  hosts:
+  - "servicec9ac-98.istioinaction.io"
+  gateways:
+  - "servicec9ac-98-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec9ac-98.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceeb3c-99-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceeb3c-99.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceeb3c-99
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceeb3c-99
+spec:
+  hosts:
+  - "serviceeb3c-99.istioinaction.io"
+  gateways:
+  - "serviceeb3c-99-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceeb3c-99.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicebb23-100-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicebb23-100.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicebb23-100
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicebb23-100
+spec:
+  hosts:
+  - "servicebb23-100.istioinaction.io"
+  gateways:
+  - "servicebb23-100-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicebb23-100.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8f28-101-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8f28-101.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8f28-101
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8f28-101
+spec:
+  hosts:
+  - "service8f28-101.istioinaction.io"
+  gateways:
+  - "service8f28-101-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8f28-101.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4194-102-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4194-102.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4194-102
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4194-102
+spec:
+  hosts:
+  - "service4194-102.istioinaction.io"
+  gateways:
+  - "service4194-102-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4194-102.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5b4c-103-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5b4c-103.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5b4c-103
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5b4c-103
+spec:
+  hosts:
+  - "service5b4c-103.istioinaction.io"
+  gateways:
+  - "service5b4c-103-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5b4c-103.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service54e7-104-gateway
+spec:
+  servers:
+    - hosts:
+        - "service54e7-104.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service54e7-104
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service54e7-104
+spec:
+  hosts:
+  - "service54e7-104.istioinaction.io"
+  gateways:
+  - "service54e7-104-gateway"
+  http:
+  - route:
+    - destination:
+        host: service54e7-104.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicefe09-105-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicefe09-105.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicefe09-105
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicefe09-105
+spec:
+  hosts:
+  - "servicefe09-105.istioinaction.io"
+  gateways:
+  - "servicefe09-105-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicefe09-105.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceda3a-106-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceda3a-106.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceda3a-106
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceda3a-106
+spec:
+  hosts:
+  - "serviceda3a-106.istioinaction.io"
+  gateways:
+  - "serviceda3a-106-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceda3a-106.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceb50a-107-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceb50a-107.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceb50a-107
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceb50a-107
+spec:
+  hosts:
+  - "serviceb50a-107.istioinaction.io"
+  gateways:
+  - "serviceb50a-107-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceb50a-107.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicecbe3-108-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicecbe3-108.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicecbe3-108
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicecbe3-108
+spec:
+  hosts:
+  - "servicecbe3-108.istioinaction.io"
+  gateways:
+  - "servicecbe3-108-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicecbe3-108.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service6789-109-gateway
+spec:
+  servers:
+    - hosts:
+        - "service6789-109.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service6789-109
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service6789-109
+spec:
+  hosts:
+  - "service6789-109.istioinaction.io"
+  gateways:
+  - "service6789-109-gateway"
+  http:
+  - route:
+    - destination:
+        host: service6789-109.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4ab2-110-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4ab2-110.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4ab2-110
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4ab2-110
+spec:
+  hosts:
+  - "service4ab2-110.istioinaction.io"
+  gateways:
+  - "service4ab2-110-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4ab2-110.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea5a7-111-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea5a7-111.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea5a7-111
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea5a7-111
+spec:
+  hosts:
+  - "servicea5a7-111.istioinaction.io"
+  gateways:
+  - "servicea5a7-111-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea5a7-111.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5a9e-112-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5a9e-112.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5a9e-112
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5a9e-112
+spec:
+  hosts:
+  - "service5a9e-112.istioinaction.io"
+  gateways:
+  - "service5a9e-112-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5a9e-112.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviced468-113-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviced468-113.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviced468-113
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviced468-113
+spec:
+  hosts:
+  - "serviced468-113.istioinaction.io"
+  gateways:
+  - "serviced468-113-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviced468-113.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec018-114-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec018-114.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec018-114
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec018-114
+spec:
+  hosts:
+  - "servicec018-114.istioinaction.io"
+  gateways:
+  - "servicec018-114-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec018-114.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service051a-115-gateway
+spec:
+  servers:
+    - hosts:
+        - "service051a-115.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service051a-115
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service051a-115
+spec:
+  hosts:
+  - "service051a-115.istioinaction.io"
+  gateways:
+  - "service051a-115-gateway"
+  http:
+  - route:
+    - destination:
+        host: service051a-115.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1db6-116-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1db6-116.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1db6-116
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1db6-116
+spec:
+  hosts:
+  - "service1db6-116.istioinaction.io"
+  gateways:
+  - "service1db6-116-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1db6-116.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceb041-117-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceb041-117.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceb041-117
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceb041-117
+spec:
+  hosts:
+  - "serviceb041-117.istioinaction.io"
+  gateways:
+  - "serviceb041-117-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceb041-117.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service92b7-118-gateway
+spec:
+  servers:
+    - hosts:
+        - "service92b7-118.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service92b7-118
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service92b7-118
+spec:
+  hosts:
+  - "service92b7-118.istioinaction.io"
+  gateways:
+  - "service92b7-118-gateway"
+  http:
+  - route:
+    - destination:
+        host: service92b7-118.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service0230-119-gateway
+spec:
+  servers:
+    - hosts:
+        - "service0230-119.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service0230-119
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service0230-119
+spec:
+  hosts:
+  - "service0230-119.istioinaction.io"
+  gateways:
+  - "service0230-119-gateway"
+  http:
+  - route:
+    - destination:
+        host: service0230-119.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicef071-120-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicef071-120.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicef071-120
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicef071-120
+spec:
+  hosts:
+  - "servicef071-120.istioinaction.io"
+  gateways:
+  - "servicef071-120-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicef071-120.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceda25-121-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceda25-121.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceda25-121
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceda25-121
+spec:
+  hosts:
+  - "serviceda25-121.istioinaction.io"
+  gateways:
+  - "serviceda25-121-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceda25-121.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7054-122-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7054-122.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7054-122
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7054-122
+spec:
+  hosts:
+  - "service7054-122.istioinaction.io"
+  gateways:
+  - "service7054-122-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7054-122.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicedc75-123-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicedc75-123.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicedc75-123
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicedc75-123
+spec:
+  hosts:
+  - "servicedc75-123.istioinaction.io"
+  gateways:
+  - "servicedc75-123-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicedc75-123.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service61f1-124-gateway
+spec:
+  servers:
+    - hosts:
+        - "service61f1-124.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service61f1-124
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service61f1-124
+spec:
+  hosts:
+  - "service61f1-124.istioinaction.io"
+  gateways:
+  - "service61f1-124-gateway"
+  http:
+  - route:
+    - destination:
+        host: service61f1-124.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee9ee-125-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee9ee-125.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee9ee-125
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee9ee-125
+spec:
+  hosts:
+  - "servicee9ee-125.istioinaction.io"
+  gateways:
+  - "servicee9ee-125-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee9ee-125.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service4d7d-126-gateway
+spec:
+  servers:
+    - hosts:
+        - "service4d7d-126.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service4d7d-126
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service4d7d-126
+spec:
+  hosts:
+  - "service4d7d-126.istioinaction.io"
+  gateways:
+  - "service4d7d-126-gateway"
+  http:
+  - route:
+    - destination:
+        host: service4d7d-126.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service25dc-127-gateway
+spec:
+  servers:
+    - hosts:
+        - "service25dc-127.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service25dc-127
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service25dc-127
+spec:
+  hosts:
+  - "service25dc-127.istioinaction.io"
+  gateways:
+  - "service25dc-127-gateway"
+  http:
+  - route:
+    - destination:
+        host: service25dc-127.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5b37-128-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5b37-128.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5b37-128
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5b37-128
+spec:
+  hosts:
+  - "service5b37-128.istioinaction.io"
+  gateways:
+  - "service5b37-128-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5b37-128.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service70e2-129-gateway
+spec:
+  servers:
+    - hosts:
+        - "service70e2-129.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service70e2-129
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service70e2-129
+spec:
+  hosts:
+  - "service70e2-129.istioinaction.io"
+  gateways:
+  - "service70e2-129-gateway"
+  http:
+  - route:
+    - destination:
+        host: service70e2-129.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service48ee-130-gateway
+spec:
+  servers:
+    - hosts:
+        - "service48ee-130.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service48ee-130
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service48ee-130
+spec:
+  hosts:
+  - "service48ee-130.istioinaction.io"
+  gateways:
+  - "service48ee-130-gateway"
+  http:
+  - route:
+    - destination:
+        host: service48ee-130.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceea0b-131-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceea0b-131.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceea0b-131
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceea0b-131
+spec:
+  hosts:
+  - "serviceea0b-131.istioinaction.io"
+  gateways:
+  - "serviceea0b-131-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceea0b-131.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service109a-132-gateway
+spec:
+  servers:
+    - hosts:
+        - "service109a-132.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service109a-132
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service109a-132
+spec:
+  hosts:
+  - "service109a-132.istioinaction.io"
+  gateways:
+  - "service109a-132-gateway"
+  http:
+  - route:
+    - destination:
+        host: service109a-132.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea75f-133-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea75f-133.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea75f-133
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea75f-133
+spec:
+  hosts:
+  - "servicea75f-133.istioinaction.io"
+  gateways:
+  - "servicea75f-133-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea75f-133.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7ce1-134-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7ce1-134.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7ce1-134
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7ce1-134
+spec:
+  hosts:
+  - "service7ce1-134.istioinaction.io"
+  gateways:
+  - "service7ce1-134-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7ce1-134.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5b1d-135-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5b1d-135.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5b1d-135
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5b1d-135
+spec:
+  hosts:
+  - "service5b1d-135.istioinaction.io"
+  gateways:
+  - "service5b1d-135-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5b1d-135.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service58ee-136-gateway
+spec:
+  servers:
+    - hosts:
+        - "service58ee-136.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service58ee-136
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service58ee-136
+spec:
+  hosts:
+  - "service58ee-136.istioinaction.io"
+  gateways:
+  - "service58ee-136-gateway"
+  http:
+  - route:
+    - destination:
+        host: service58ee-136.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service81a5-137-gateway
+spec:
+  servers:
+    - hosts:
+        - "service81a5-137.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service81a5-137
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service81a5-137
+spec:
+  hosts:
+  - "service81a5-137.istioinaction.io"
+  gateways:
+  - "service81a5-137-gateway"
+  http:
+  - route:
+    - destination:
+        host: service81a5-137.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5d5e-138-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5d5e-138.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5d5e-138
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5d5e-138
+spec:
+  hosts:
+  - "service5d5e-138.istioinaction.io"
+  gateways:
+  - "service5d5e-138-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5d5e-138.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceb0c5-139-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceb0c5-139.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceb0c5-139
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceb0c5-139
+spec:
+  hosts:
+  - "serviceb0c5-139.istioinaction.io"
+  gateways:
+  - "serviceb0c5-139-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceb0c5-139.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee43d-140-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee43d-140.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee43d-140
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee43d-140
+spec:
+  hosts:
+  - "servicee43d-140.istioinaction.io"
+  gateways:
+  - "servicee43d-140-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee43d-140.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec733-141-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec733-141.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec733-141
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec733-141
+spec:
+  hosts:
+  - "servicec733-141.istioinaction.io"
+  gateways:
+  - "servicec733-141-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec733-141.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service06ed-142-gateway
+spec:
+  servers:
+    - hosts:
+        - "service06ed-142.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service06ed-142
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service06ed-142
+spec:
+  hosts:
+  - "service06ed-142.istioinaction.io"
+  gateways:
+  - "service06ed-142-gateway"
+  http:
+  - route:
+    - destination:
+        host: service06ed-142.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service09ec-143-gateway
+spec:
+  servers:
+    - hosts:
+        - "service09ec-143.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service09ec-143
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service09ec-143
+spec:
+  hosts:
+  - "service09ec-143.istioinaction.io"
+  gateways:
+  - "service09ec-143-gateway"
+  http:
+  - route:
+    - destination:
+        host: service09ec-143.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service59a2-144-gateway
+spec:
+  servers:
+    - hosts:
+        - "service59a2-144.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service59a2-144
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service59a2-144
+spec:
+  hosts:
+  - "service59a2-144.istioinaction.io"
+  gateways:
+  - "service59a2-144-gateway"
+  http:
+  - route:
+    - destination:
+        host: service59a2-144.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service71ef-145-gateway
+spec:
+  servers:
+    - hosts:
+        - "service71ef-145.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service71ef-145
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service71ef-145
+spec:
+  hosts:
+  - "service71ef-145.istioinaction.io"
+  gateways:
+  - "service71ef-145-gateway"
+  http:
+  - route:
+    - destination:
+        host: service71ef-145.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicefe02-146-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicefe02-146.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicefe02-146
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicefe02-146
+spec:
+  hosts:
+  - "servicefe02-146.istioinaction.io"
+  gateways:
+  - "servicefe02-146-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicefe02-146.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service94dd-147-gateway
+spec:
+  servers:
+    - hosts:
+        - "service94dd-147.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service94dd-147
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service94dd-147
+spec:
+  hosts:
+  - "service94dd-147.istioinaction.io"
+  gateways:
+  - "service94dd-147-gateway"
+  http:
+  - route:
+    - destination:
+        host: service94dd-147.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicedfb6-148-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicedfb6-148.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicedfb6-148
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicedfb6-148
+spec:
+  hosts:
+  - "servicedfb6-148.istioinaction.io"
+  gateways:
+  - "servicedfb6-148-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicedfb6-148.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service2384-149-gateway
+spec:
+  servers:
+    - hosts:
+        - "service2384-149.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service2384-149
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service2384-149
+spec:
+  hosts:
+  - "service2384-149.istioinaction.io"
+  gateways:
+  - "service2384-149-gateway"
+  http:
+  - route:
+    - destination:
+        host: service2384-149.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9f3b-150-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9f3b-150.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9f3b-150
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9f3b-150
+spec:
+  hosts:
+  - "service9f3b-150.istioinaction.io"
+  gateways:
+  - "service9f3b-150-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9f3b-150.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service5797-151-gateway
+spec:
+  servers:
+    - hosts:
+        - "service5797-151.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service5797-151
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service5797-151
+spec:
+  hosts:
+  - "service5797-151.istioinaction.io"
+  gateways:
+  - "service5797-151-gateway"
+  http:
+  - route:
+    - destination:
+        host: service5797-151.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee5e2-152-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee5e2-152.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee5e2-152
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee5e2-152
+spec:
+  hosts:
+  - "servicee5e2-152.istioinaction.io"
+  gateways:
+  - "servicee5e2-152-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee5e2-152.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8c14-153-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8c14-153.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8c14-153
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8c14-153
+spec:
+  hosts:
+  - "service8c14-153.istioinaction.io"
+  gateways:
+  - "service8c14-153-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8c14-153.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service36ba-154-gateway
+spec:
+  servers:
+    - hosts:
+        - "service36ba-154.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service36ba-154
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service36ba-154
+spec:
+  hosts:
+  - "service36ba-154.istioinaction.io"
+  gateways:
+  - "service36ba-154-gateway"
+  http:
+  - route:
+    - destination:
+        host: service36ba-154.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9d02-155-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9d02-155.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9d02-155
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9d02-155
+spec:
+  hosts:
+  - "service9d02-155.istioinaction.io"
+  gateways:
+  - "service9d02-155-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9d02-155.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service21f0-156-gateway
+spec:
+  servers:
+    - hosts:
+        - "service21f0-156.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service21f0-156
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service21f0-156
+spec:
+  hosts:
+  - "service21f0-156.istioinaction.io"
+  gateways:
+  - "service21f0-156-gateway"
+  http:
+  - route:
+    - destination:
+        host: service21f0-156.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1d28-157-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1d28-157.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1d28-157
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1d28-157
+spec:
+  hosts:
+  - "service1d28-157.istioinaction.io"
+  gateways:
+  - "service1d28-157-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1d28-157.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviced41c-158-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviced41c-158.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviced41c-158
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviced41c-158
+spec:
+  hosts:
+  - "serviced41c-158.istioinaction.io"
+  gateways:
+  - "serviced41c-158-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviced41c-158.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1760-159-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1760-159.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1760-159
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1760-159
+spec:
+  hosts:
+  - "service1760-159.istioinaction.io"
+  gateways:
+  - "service1760-159-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1760-159.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service3a6b-160-gateway
+spec:
+  servers:
+    - hosts:
+        - "service3a6b-160.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service3a6b-160
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service3a6b-160
+spec:
+  hosts:
+  - "service3a6b-160.istioinaction.io"
+  gateways:
+  - "service3a6b-160-gateway"
+  http:
+  - route:
+    - destination:
+        host: service3a6b-160.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicef3c0-161-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicef3c0-161.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicef3c0-161
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicef3c0-161
+spec:
+  hosts:
+  - "servicef3c0-161.istioinaction.io"
+  gateways:
+  - "servicef3c0-161-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicef3c0-161.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8f63-162-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8f63-162.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8f63-162
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8f63-162
+spec:
+  hosts:
+  - "service8f63-162.istioinaction.io"
+  gateways:
+  - "service8f63-162-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8f63-162.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7d80-163-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7d80-163.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7d80-163
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7d80-163
+spec:
+  hosts:
+  - "service7d80-163.istioinaction.io"
+  gateways:
+  - "service7d80-163-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7d80-163.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service86f3-164-gateway
+spec:
+  servers:
+    - hosts:
+        - "service86f3-164.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service86f3-164
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service86f3-164
+spec:
+  hosts:
+  - "service86f3-164.istioinaction.io"
+  gateways:
+  - "service86f3-164-gateway"
+  http:
+  - route:
+    - destination:
+        host: service86f3-164.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service39eb-165-gateway
+spec:
+  servers:
+    - hosts:
+        - "service39eb-165.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service39eb-165
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service39eb-165
+spec:
+  hosts:
+  - "service39eb-165.istioinaction.io"
+  gateways:
+  - "service39eb-165-gateway"
+  http:
+  - route:
+    - destination:
+        host: service39eb-165.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1597-166-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1597-166.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1597-166
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1597-166
+spec:
+  hosts:
+  - "service1597-166.istioinaction.io"
+  gateways:
+  - "service1597-166-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1597-166.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service3118-167-gateway
+spec:
+  servers:
+    - hosts:
+        - "service3118-167.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service3118-167
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service3118-167
+spec:
+  hosts:
+  - "service3118-167.istioinaction.io"
+  gateways:
+  - "service3118-167-gateway"
+  http:
+  - route:
+    - destination:
+        host: service3118-167.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service76f2-168-gateway
+spec:
+  servers:
+    - hosts:
+        - "service76f2-168.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service76f2-168
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service76f2-168
+spec:
+  hosts:
+  - "service76f2-168.istioinaction.io"
+  gateways:
+  - "service76f2-168-gateway"
+  http:
+  - route:
+    - destination:
+        host: service76f2-168.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec77d-169-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec77d-169.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec77d-169
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec77d-169
+spec:
+  hosts:
+  - "servicec77d-169.istioinaction.io"
+  gateways:
+  - "servicec77d-169-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec77d-169.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8539-170-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8539-170.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8539-170
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8539-170
+spec:
+  hosts:
+  - "service8539-170.istioinaction.io"
+  gateways:
+  - "service8539-170-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8539-170.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7e13-171-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7e13-171.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7e13-171
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7e13-171
+spec:
+  hosts:
+  - "service7e13-171.istioinaction.io"
+  gateways:
+  - "service7e13-171-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7e13-171.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service3ace-172-gateway
+spec:
+  servers:
+    - hosts:
+        - "service3ace-172.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service3ace-172
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service3ace-172
+spec:
+  hosts:
+  - "service3ace-172.istioinaction.io"
+  gateways:
+  - "service3ace-172-gateway"
+  http:
+  - route:
+    - destination:
+        host: service3ace-172.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service3c12-173-gateway
+spec:
+  servers:
+    - hosts:
+        - "service3c12-173.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service3c12-173
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service3c12-173
+spec:
+  hosts:
+  - "service3c12-173.istioinaction.io"
+  gateways:
+  - "service3c12-173-gateway"
+  http:
+  - route:
+    - destination:
+        host: service3c12-173.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service9c6a-174-gateway
+spec:
+  servers:
+    - hosts:
+        - "service9c6a-174.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service9c6a-174
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service9c6a-174
+spec:
+  hosts:
+  - "service9c6a-174.istioinaction.io"
+  gateways:
+  - "service9c6a-174-gateway"
+  http:
+  - route:
+    - destination:
+        host: service9c6a-174.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicecfbe-175-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicecfbe-175.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicecfbe-175
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicecfbe-175
+spec:
+  hosts:
+  - "servicecfbe-175.istioinaction.io"
+  gateways:
+  - "servicecfbe-175-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicecfbe-175.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service2eb0-176-gateway
+spec:
+  servers:
+    - hosts:
+        - "service2eb0-176.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service2eb0-176
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service2eb0-176
+spec:
+  hosts:
+  - "service2eb0-176.istioinaction.io"
+  gateways:
+  - "service2eb0-176-gateway"
+  http:
+  - route:
+    - destination:
+        host: service2eb0-176.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec854-177-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec854-177.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec854-177
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec854-177
+spec:
+  hosts:
+  - "servicec854-177.istioinaction.io"
+  gateways:
+  - "servicec854-177-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec854-177.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service70ec-178-gateway
+spec:
+  servers:
+    - hosts:
+        - "service70ec-178.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service70ec-178
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service70ec-178
+spec:
+  hosts:
+  - "service70ec-178.istioinaction.io"
+  gateways:
+  - "service70ec-178-gateway"
+  http:
+  - route:
+    - destination:
+        host: service70ec-178.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicece9c-179-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicece9c-179.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicece9c-179
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicece9c-179
+spec:
+  hosts:
+  - "servicece9c-179.istioinaction.io"
+  gateways:
+  - "servicece9c-179-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicece9c-179.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service308f-180-gateway
+spec:
+  servers:
+    - hosts:
+        - "service308f-180.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service308f-180
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service308f-180
+spec:
+  hosts:
+  - "service308f-180.istioinaction.io"
+  gateways:
+  - "service308f-180-gateway"
+  http:
+  - route:
+    - destination:
+        host: service308f-180.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service7b63-181-gateway
+spec:
+  servers:
+    - hosts:
+        - "service7b63-181.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service7b63-181
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service7b63-181
+spec:
+  hosts:
+  - "service7b63-181.istioinaction.io"
+  gateways:
+  - "service7b63-181-gateway"
+  http:
+  - route:
+    - destination:
+        host: service7b63-181.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec63a-182-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec63a-182.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec63a-182
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec63a-182
+spec:
+  hosts:
+  - "servicec63a-182.istioinaction.io"
+  gateways:
+  - "servicec63a-182-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec63a-182.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service57ec-183-gateway
+spec:
+  servers:
+    - hosts:
+        - "service57ec-183.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service57ec-183
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service57ec-183
+spec:
+  hosts:
+  - "service57ec-183.istioinaction.io"
+  gateways:
+  - "service57ec-183-gateway"
+  http:
+  - route:
+    - destination:
+        host: service57ec-183.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceaa71-184-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceaa71-184.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceaa71-184
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceaa71-184
+spec:
+  hosts:
+  - "serviceaa71-184.istioinaction.io"
+  gateways:
+  - "serviceaa71-184-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceaa71-184.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicec45b-185-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicec45b-185.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicec45b-185
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicec45b-185
+spec:
+  hosts:
+  - "servicec45b-185.istioinaction.io"
+  gateways:
+  - "servicec45b-185-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicec45b-185.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service51bf-186-gateway
+spec:
+  servers:
+    - hosts:
+        - "service51bf-186.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service51bf-186
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service51bf-186
+spec:
+  hosts:
+  - "service51bf-186.istioinaction.io"
+  gateways:
+  - "service51bf-186-gateway"
+  http:
+  - route:
+    - destination:
+        host: service51bf-186.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicee628-187-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicee628-187.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicee628-187
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicee628-187
+spec:
+  hosts:
+  - "servicee628-187.istioinaction.io"
+  gateways:
+  - "servicee628-187-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicee628-187.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8db0-188-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8db0-188.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8db0-188
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8db0-188
+spec:
+  hosts:
+  - "service8db0-188.istioinaction.io"
+  gateways:
+  - "service8db0-188-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8db0-188.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service1d15-189-gateway
+spec:
+  servers:
+    - hosts:
+        - "service1d15-189.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service1d15-189
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service1d15-189
+spec:
+  hosts:
+  - "service1d15-189.istioinaction.io"
+  gateways:
+  - "service1d15-189-gateway"
+  http:
+  - route:
+    - destination:
+        host: service1d15-189.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service2864-190-gateway
+spec:
+  servers:
+    - hosts:
+        - "service2864-190.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service2864-190
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service2864-190
+spec:
+  hosts:
+  - "service2864-190.istioinaction.io"
+  gateways:
+  - "service2864-190-gateway"
+  http:
+  - route:
+    - destination:
+        host: service2864-190.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service03a4-191-gateway
+spec:
+  servers:
+    - hosts:
+        - "service03a4-191.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service03a4-191
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service03a4-191
+spec:
+  hosts:
+  - "service03a4-191.istioinaction.io"
+  gateways:
+  - "service03a4-191-gateway"
+  http:
+  - route:
+    - destination:
+        host: service03a4-191.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service2983-192-gateway
+spec:
+  servers:
+    - hosts:
+        - "service2983-192.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service2983-192
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service2983-192
+spec:
+  hosts:
+  - "service2983-192.istioinaction.io"
+  gateways:
+  - "service2983-192-gateway"
+  http:
+  - route:
+    - destination:
+        host: service2983-192.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service0693-193-gateway
+spec:
+  servers:
+    - hosts:
+        - "service0693-193.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service0693-193
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service0693-193
+spec:
+  hosts:
+  - "service0693-193.istioinaction.io"
+  gateways:
+  - "service0693-193-gateway"
+  http:
+  - route:
+    - destination:
+        host: service0693-193.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service6e0a-194-gateway
+spec:
+  servers:
+    - hosts:
+        - "service6e0a-194.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service6e0a-194
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service6e0a-194
+spec:
+  hosts:
+  - "service6e0a-194.istioinaction.io"
+  gateways:
+  - "service6e0a-194-gateway"
+  http:
+  - route:
+    - destination:
+        host: service6e0a-194.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: serviceb558-195-gateway
+spec:
+  servers:
+    - hosts:
+        - "serviceb558-195.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: serviceb558-195
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: serviceb558-195
+spec:
+  hosts:
+  - "serviceb558-195.istioinaction.io"
+  gateways:
+  - "serviceb558-195-gateway"
+  http:
+  - route:
+    - destination:
+        host: serviceb558-195.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicef66c-196-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicef66c-196.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicef66c-196
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicef66c-196
+spec:
+  hosts:
+  - "servicef66c-196.istioinaction.io"
+  gateways:
+  - "servicef66c-196-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicef66c-196.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8772-197-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8772-197.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8772-197
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8772-197
+spec:
+  hosts:
+  - "service8772-197.istioinaction.io"
+  gateways:
+  - "service8772-197-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8772-197.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: servicea1ba-198-gateway
+spec:
+  servers:
+    - hosts:
+        - "servicea1ba-198.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: servicea1ba-198
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: servicea1ba-198
+spec:
+  hosts:
+  - "servicea1ba-198.istioinaction.io"
+  gateways:
+  - "servicea1ba-198-gateway"
+  http:
+  - route:
+    - destination:
+        host: servicea1ba-198.istioinaction.svc.cluster.local
+        port:
+          number: 80
+---
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: service8785-199-gateway
+spec:
+  servers:
+    - hosts:
+        - "service8785-199.istioinaction.io"
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: catalog
+  name: service8785-199
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: catalog
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: service8785-199
+spec:
+  hosts:
+  - "service8785-199.istioinaction.io"
+  gateways:
+  - "service8785-199-gateway"
+  http:
+  - route:
+    - destination:
+        host: service8785-199.istioinaction.svc.cluster.local
+        port:
+          number: 80
