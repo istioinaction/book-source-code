@@ -4,17 +4,19 @@ kind: Deployment
 metadata:
   labels:
     app: catalog
+    version: v1
   name: catalog
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: catalog
+      version: v1
   template:
     metadata:
       labels:
         app: catalog
-        version: v2
+        version: v1
     spec:
       containers:
       - env:
