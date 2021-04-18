@@ -52,9 +52,6 @@ catalog-pod:
 sleep-pod:
 	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n istioinaction | cut -d ' ' -f 1)
 
-.PHONY: statsd-pod
-statsd-pod:
-	@echo $(shell kubectl get pod -l run=statsd -o jsonpath={.items..metadata.name} -n istioinaction)
 
 .PHONY: get-demo-curl
 get-demo-curl:

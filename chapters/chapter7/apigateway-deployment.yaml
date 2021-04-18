@@ -12,6 +12,8 @@ spec:
       app: apigateway
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/statsInclusionPrefixes: "cluster.outbound|80||catalog.istioinaction.svc.cluster.local"    
       labels:
         app: apigateway
     spec:
@@ -23,28 +25,10 @@ spec:
               fieldPath: metadata.namespace
         image: istioinaction/apigateway:latest
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8081
-            scheme: HTTP
-          initialDelaySeconds: 180
-        name: spring-boot
+        name: apigateway
         ports:
         - containerPort: 8080
           name: http
           protocol: TCP
-        - containerPort: 9779
-          name: prometheus
-          protocol: TCP
-        - containerPort: 8778
-          name: jolokia
-          protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8081
-            scheme: HTTP
-          initialDelaySeconds: 10
         securityContext:
           privileged: false
