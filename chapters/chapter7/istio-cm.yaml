@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  mesh: |-
+    accessLogFile: /dev/stdout
+    defaultConfig:
+      discoveryAddress: istiod.istio-system.svc:15012
+      proxyMetadata: {}
+      tracing:
+        zipkin:
+          address: zipkin.istio-system:9411
+    enablePrometheusMerge: true
+    outboundTrafficPolicy:
+      mode: REGISTRY_ONLY
+    rootNamespace: istio-system
+    trustDomain: cluster.local
+  meshNetworks: 'networks: {}'
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-04-08T13:42:43Z"
+  labels:
+    install.operator.istio.io/owning-resource: unknown
+    install.operator.istio.io/owning-resource-namespace: istio-system
+    istio.io/rev: default
+    operator.istio.io/component: Pilot
+    operator.istio.io/managed: Reconcile
+    operator.istio.io/version: 1.9.2
+    release: istio
+    manager: istio-operator
+    operation: Apply
+    time: "2021-04-08T18:23:59Z"
+  name: istio
+  namespace: istio-system
+
