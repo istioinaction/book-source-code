@@ -5,21 +5,7 @@ MINIKUBE := $(shell command -v minikube)
 # Deploy services
 #----------------------------------------------------------------------------------
 
-.PHONY: deploy-apigateway-with-catalog
-deploy-apigateway-with-catalog:
-	-istioctl kube-inject -f services/catalog/kubernetes/catalog.yaml | kubectl apply -f -
-	-istioctl kube-inject -f services/apigateway/kubernetes/apigateway.yaml | kubectl apply -f -
-	-kubectl apply -f ./chapters/chapter7/coolstore-vs.yaml
-	-kubectl apply -f ./chapters/chapter7/coolstore-gw.yaml
 
-.PHONY: undeploy-apigateway-with-catalog
-undeploy-apigateway-with-catalog:
-	-kubectl delete svc catalog
-	-kubectl delete deploy catalog
-	-kubectl delete svc apigateway
-	-kubectl delete deploy apigateway
-	-kubectl delete gateway coolstore-gateway
-	-kubectl delete vs apigateway-vs-from-gw
 
 .PHONY: ingress-url
 ingress-url:
@@ -32,9 +18,6 @@ ifndef MINIKUBE
 endif
 # ToDo add option when using cloud to use the external service
 # kubectl get svc istio-ingressgateway -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
-
-istiod-pod:
-	@echo $(shell kubectl get pod -l app=istiod -o jsonpath={.items..metadata.name} -n istio-system | cut -d ' ' -f 1)
 
 .PHONY: ingress-pod
 ingress-pod:
@@ -53,9 +36,6 @@ sleep-pod:
 	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n istioinaction | cut -d ' ' -f 1)
 
 
-.PHONY: get-demo-curl
-get-demo-curl:
-	@echo 'curl -H "Host: apigateway.istioinaction.io" http://$(shell make ingress-url)/api/products'
 
 .PHONY: chapter8-setup-authn
 chapter8-setup-authn:
@@ -106,27 +86,4 @@ chapter10-performance:
 	-kubectl -n istioinaction apply -f chapters/chapter10/catalog-virtualservice.yaml
 	-kubectl -n istioinaction apply -f chapters/chapter10/catalog-gateway.yaml
 	-istioctl kube-inject -f chapters/chapter10/sleep-dummy-workloads.yaml | kubectl -n istioinaction apply -f -
-
-#----------------------------------------------------------------------------------
-# Port forward Observability
-#----------------------------------------------------------------------------------
-.PHONY: pf-grafana
-pf-grafana:
-	kubectl port-forward -n istio-system $(shell kubectl get pod -n istio-system | grep -i ^grafana | cut -d ' ' -f 1) 3000:3000 > /dev/null 2>&1 &
-
-
-.PHONY: pf-prom
-pf-prom:
-	kubectl port-forward -n istio-system $(shell kubectl get pod -n istio-system | grep -i ^prometheus | cut -d ' ' -f 1) 9090:9090 > /dev/null 2>&1 &
-
-.PHONY: pf-kiali
-pf-kiali:
-	kubectl port-forward -n istio-system $(shell kubectl get pod -n istio-system | grep -i ^kiali | cut -d ' ' -f 1) 8080:20001 > /dev/null 2>&1 &
-
-.PHONY: pf-obs
-pf-obs: pf-grafana pf-kiali pf-prom
-
-.PHONY: clean
-clean:
-		for pid in $(shell ps aux  | awk '/port-forward/ {print $$2}'); do kill -9 $$pid; done
 
