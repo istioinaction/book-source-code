@@ -1,11 +1,19 @@
 #!/bin/bash
+export PROM_URL="prom-kube-prometheus-stack-prometheus.prometheus.svc.cluster.local:9090"
 
 main(){
   ## Pass input args for initialization
   init_args "$@"
 
-  ISTIOD_POD=$(make istiod-pod) 
-  PRE_PUSHES=$(kubectl -n istioinaction exec -it `make sleep-pod` -c sleep -- curl 'prometheus.istio-system.svc.cluster.local:9090/api/v1/query?query=sum(pilot_xds_pushes%7B%7D)' | jq  '.. |."value"? | select(. != null) | .[1]' -r)
+  SLEEP_POD=$(kubectl -n istioinaction get pod -l app=sleep -o jsonpath={.items..metadata.name} -n istioinaction | cut -d ' ' -f 1)
+
+# Comment this out for the default prometheus, we will use prometheus stack
+# in the book
+  #PRE_PUSHES=$(kubectl -n istioinaction exec -it $SLEEP_POD -c sleep -- curl 'prometheus.istio-system.svc.cluster.local:9090/api/v1/query?query=sum(pilot_xds_pushes%7B%7D)' | jq  '.. |."value"? | select(. != null) | .[1]' -r)
+
+  PRE_PUSHES=$(kubectl -n istioinaction exec -it $SLEEP_POD -c sleep -- curl "$PROM_URL/api/v1/query?query=sum(pilot_xds_pushes%7B%7D)" | jq  '.. |."value"? | select(. != null) | .[1]' -r) 
+
+  echo "Pre Pushes: $PRE_PUSHES"
 
   ## Duration for all requests
   #time {
@@ -31,8 +39,11 @@ main(){
 #  echo "Total time for $REPS services (Delay of $DELAY per service is included in the time)"
 
   sleep 5
-  POST_PUSHES=$(kubectl -n istioinaction exec -it `make sleep-pod` -c sleep -- curl 'prometheus.istio-system.svc.cluster.local:9090/api/v1/query?query=sum(pilot_xds_pushes%7B%7D)' | jq  '.. |."value"? | select(. != null) | .[1]' -r)
-  LATENCY=$(kubectl -n istioinaction exec -it `make sleep-pod` -c sleep -- curl 'prometheus.istio-system.svc.cluster.local:9090/api/v1/query' --data-urlencode "query=histogram_quantile(0.99, sum(rate(pilot_proxy_convergence_time_bucket[1m])) by (le))" | jq  '.. |."value"? | select(. != null) | .[1]' -r)
+  
+  POST_PUSHES=$(kubectl -n istioinaction exec -it $SLEEP_POD -c sleep -- curl "$PROM_URL/api/v1/query?query=sum(pilot_xds_pushes%7B%7D)" | jq  '.. |."value"? | select(. != null) | .[1]' -r)
+
+  LATENCY=$(kubectl -n istioinaction exec -it $SLEEP_POD -c sleep -- curl "$PROM_URL/api/v1/query" --data-urlencode "query=histogram_quantile(0.99, sum(rate(pilot_proxy_convergence_time_bucket[1m])) by (le))" | jq  '.. |."value"? | select(. != null) | .[1]' -r)
+
   echo "Push count:" `expr $POST_PUSHES - $PRE_PUSHES`
   echo "Latency in the last minute: `printf "%.2f\n" $LATENCY` seconds" 
 }

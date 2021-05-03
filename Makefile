@@ -65,18 +65,6 @@ chapter8-cleanup:
 	-kubectl delete -f chapters/chapter8/sleep.yaml -n default 2> /dev/null || true
 	-kubectl delete ns istioinaction 2> /dev/null || true
 
-.PHONY: chapter9-traffic-management
-chapter9-traffic-management:
-	-kubectl delete ns istioinaction 2> /dev/null || true
-	-kubectl create ns istioinaction
-	-istioctl kube-inject -f services/catalog/kubernetes/catalog.yaml | kubectl -n istioinaction apply -f -
-	-istioctl kube-inject -f chapters/chapter9/catalog-deployment-v2.yaml | kubectl -n istioinaction apply -f -
-	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-virtualservice-subsets-v1-v2.yaml
-	-kubectl -n istioinaction apply -f chapters/chapter9/catalog-gateway.yaml
-
-.PHONY: chapter9-telemetry
-chapter9-telemetry: chapter9-traffic-management
-	-kubectl patch vs catalog-v1-v2 -n istioinaction --type json -p '[{"op": "add", "path": "/spec/http/0/timeout", "value": "0.5s"}]' 
 
 .PHONY: chapter10-performance
 chapter10-performance: 

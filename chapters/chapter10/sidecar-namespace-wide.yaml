@@ -1,5 +1,5 @@
 ## Not used in the book, left as reference
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1beta1
 kind: Sidecar
 metadata:
   name: default
@@ -8,5 +8,6 @@ spec:
   egress:
   - hosts:
     - "istio-system/*"
+    - "prometheus/*"
   outboundTrafficPolicy:
     mode: REGISTRY_ONLY
