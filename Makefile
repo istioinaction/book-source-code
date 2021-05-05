@@ -31,10 +31,6 @@ apigateway-pod:
 catalog-pod:
 	@echo $(shell kubectl get pod -l app=catalog -o jsonpath={.items..metadata.name} -n istioinaction | cut -d ' ' -f 1)
 
-.PHONY: sleep-pod
-sleep-pod:
-	@echo $(shell kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name} -n istioinaction | cut -d ' ' -f 1)
-
 
 
 .PHONY: chapter8-setup-authn
@@ -65,13 +61,4 @@ chapter8-cleanup:
 	-kubectl delete -f chapters/chapter8/sleep.yaml -n default 2> /dev/null || true
 	-kubectl delete ns istioinaction 2> /dev/null || true
 
-
-.PHONY: chapter10-performance
-chapter10-performance: 
-	-kubectl delete ns istioinaction 2> /dev/null || true
-	-kubectl create ns istioinaction
-	-istioctl kube-inject -f services/catalog/kubernetes/catalog.yaml | kubectl -n istioinaction apply -f -
-	-kubectl -n istioinaction apply -f chapters/chapter10/catalog-virtualservice.yaml
-	-kubectl -n istioinaction apply -f chapters/chapter10/catalog-gateway.yaml
-	-istioctl kube-inject -f chapters/chapter10/sleep-dummy-workloads.yaml | kubectl -n istioinaction apply -f -
 

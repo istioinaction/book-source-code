@@ -1,0 +1,12 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+spec:
+  meshConfig:
+    discoverySelectors:
+      - matchExpressions:
+        - key: istio-exclude
+          operator: NotIn
+          values:
+            - "true"
