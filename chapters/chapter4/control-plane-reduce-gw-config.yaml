@@ -1,0 +1,18 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: control-plane
+spec:
+  profile: minimal
+  components:
+    pilot:
+      k8s:
+        env:                                                                            
+        - name: PILOT_FILTER_GATEWAY_CLUSTER_CONFIG                                                  
+          value: "true"
+  meshConfig:              
+    defaultConfig:       
+      proxyMetadata:      
+        ISTIO_META_DNS_CAPTURE: "true"
+    enablePrometheusMerge: true  
+  

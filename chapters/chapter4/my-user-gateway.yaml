@@ -1,0 +1,20 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: my-user-gateway-install
+  namespace: istioinaction
+spec:
+  profile: empty
+  values:
+    gateways:
+      istio-ingressgateway:
+        autoscaleEnabled: false
+  components:
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: false    
+    - name: my-user-gateway
+      namespace: istioinaction
+      enabled: true
+      label:
+        istio: my-user-gateway
