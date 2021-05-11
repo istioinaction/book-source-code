@@ -1,0 +1,8 @@
+data:
+  mesh: |-
+    # Add the following content to define the external authorizers.
+    extensionProviders:
+    - name: "sample-ext-authz-http"
+      envoyExtAuthzHttp:
+        service: "ext-authz.istioinaction.svc.cluster.local"
+        port: "8000"

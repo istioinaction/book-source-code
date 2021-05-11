@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ext-authz
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: apigateway
+  action: CUSTOM
+  provider:
+    name: sample-ext-authz-http
+  rules:
+  - to:
+    - operation:
+        paths: ["/"]
