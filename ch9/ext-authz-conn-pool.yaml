@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: ext-auth-timeout
+  namespace: istioinaction
+spec:
+  host: ext-authz.istioinaction.svc.cluster.local 
+  trafficPolicy:
+    connectionPool:
+      http:
+        idleTimeout: 5s
