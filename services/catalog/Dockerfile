@@ -1,11 +1,10 @@
 FROM node:latest
 LABEL maintainer="Christian Posta <christian.posta@gmail.com>" 
 
-RUN npm install json-server faker
-
 WORKDIR /usr/src/app
 VOLUME /usr/src/app
 
+RUN npm install json-server faker
 COPY package*.json /usr/src/app/
 RUN npm install
 
