@@ -1,0 +1,36 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: simple-backend-gateway
+  namespace: istioinaction
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "simple-backend.istioinaction.io"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: simple-backend-vs-for-gateway
+  namespace: istioinaction
+spec:
+  hosts:
+  - "simple-backend.istioinaction.io"
+  gateways:
+  - simple-backend-gateway
+  http:
+  - route:
+    - destination:
+        host: simple-backend.istioinaction.svc.cluster.local
+    retries:
+      retryRemoteLocalities: true
+      attempts: 3
+      retryOn: 5xx
+  
