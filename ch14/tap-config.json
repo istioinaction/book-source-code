@@ -1,0 +1,22 @@
+{
+  "config_id": "tap_config",
+  "tap_config": {
+     "match_config": {
+        "http_request_headers_match": {
+          "headers": [
+              {
+                "name": "x-app-tap",
+                "exact_match": "true"
+              }
+          ]
+        }
+     },
+     "output_config": {
+        "sinks": [
+           {
+              "streaming_admin": {}
+           }
+        ]
+     }
+  }
+}
