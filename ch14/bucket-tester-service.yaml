@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bucket-tester
+  name: bucket-tester
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 5678
+  selector:
+    app: bucket-tester
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bucket-tester
+    version: v1
+  name: bucket-tester
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bucket-tester
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: bucket-tester
+        version: v1
+    spec:
+      containers:
+      - image: hashicorp/http-echo:0.2.3
+        imagePullPolicy: IfNotPresent
+        name: bucket-tester
+        args:
+        - "-text=dark-launch-7"        
+        ports:
+        - containerPort: 5678
+          name: http
+          protocol: TCP
+        securityContext:
+          privileged: false
