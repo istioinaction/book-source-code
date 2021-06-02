@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: apigateway-lua-extension
+  name: httpbin-lua-extension
   namespace: istioinaction
 spec:
   workloadSelector:
