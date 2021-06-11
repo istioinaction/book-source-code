@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: WorkloadGroup
+metadata:
+  name: forum
+  namespace: forum-services
+spec:
+  metadata:
+    annotations: {}
+    labels:
+      app: forum
+  template:
+    serviceAccount: forum-sa
+    network: vm-network
+  probe:
+    periodSeconds: 5
+    initialDelaySeconds: 1
+    httpGet:
+      port: 8080
+      path: /api/healthz

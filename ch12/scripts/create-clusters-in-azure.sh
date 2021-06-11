@@ -7,7 +7,7 @@ if [[ $* == *-v* ]]; then
   set -x
 fi
 
-echo "== Creating clusters =="
+echo "== Create clusters =="
 az group create --resource-group west-cluster-rg --location westus > /dev/null
 az group create --resource-group east-cluster-rg --location eastus > /dev/null
 
@@ -24,6 +24,6 @@ echo "Done"
 sleep 10
 
 echo
-echo "== Configuring access to the clusters for kubectl =="
+echo "== Configure access to the cluster for kubectl =="
 az aks get-credentials --resource-group west-cluster-rg --name west-cluster --overwrite-existing
 az aks get-credentials --resource-group east-cluster-rg --name east-cluster --overwrite-existing

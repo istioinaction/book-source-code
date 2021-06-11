@@ -1,0 +1,25 @@
+apiVersion: install.istio.io/v1alpha1
+metadata:
+  name: istio-controlplane
+  namespace: istio-system
+kind: IstioOperator
+spec:
+  profile: demo
+  components:
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: false
+  meshConfig:
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+  values:
+    pilot:
+      env:
+        PILOT_ENABLE_WORKLOAD_ENTRY_AUTOREGISTRATION: true
+        PILOT_ENABLE_WORKLOAD_ENTRY_HEALTHCHECKS: true
+    global:
+      meshID: usmesh
+      multiCluster:
+        clusterName: west-cluster
+      network: west-network

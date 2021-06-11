@@ -4,11 +4,9 @@ metadata:
   namespace: istio-system
 kind: IstioOperator
 spec:
-  profile: demo
-  components:
-    egressGateways:
-    - name: istio-egressgateway
-      enabled: false
+  meshConfig:
+    accessLogFile: /dev/stdout
+    accessLogEncoding: JSON
   values:
     global:
       meshID: usmesh

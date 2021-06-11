@@ -46,7 +46,7 @@ spec:
         - name: CATALOG_SERVICE_PORT
           value: "80"
         - name: FORUM_SERVICE_HOST
-          value: forum.vm-services
+          value: forum.forum-services
         - name: FORUM_SERVICE_PORT
           value: "80"
         # TODO
