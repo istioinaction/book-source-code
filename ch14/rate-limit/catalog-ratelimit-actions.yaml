@@ -25,22 +25,22 @@ spec:
                   descriptor_value: no_loyalty
                   expect_match: false
                   headers:
-                  - name: "x-foo"
+                  - name: "x-loyalty"
             - actions:
               - header_value_match:
                   descriptor_value: bronze_request
                   headers:
-                  - name: "x-foo"
+                  - name: "x-loyalty"
                     exact_match: bronze
             - actions:
               - header_value_match:
                   descriptor_value: silver_request
                   headers:
-                  - name: "x-foo"
+                  - name: "x-loyalty"
                     exact_match: silver
             - actions:
               - header_value_match:
                   descriptor_value: gold_request
                   headers:
-                  - name: "x-foo"                  
+                  - name: "x-loyalty"                  
 

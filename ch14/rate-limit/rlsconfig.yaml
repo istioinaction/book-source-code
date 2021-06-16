@@ -13,6 +13,11 @@ data:
           unit: MINUTE
           requests_per_unit: 1
       - key: header_match
+        value: gold_request
+        rate_limit:
+          unit: MINUTE
+          requests_per_unit: 10
+      - key: header_match
         value: silver_request
         rate_limit:
           unit: MINUTE
@@ -22,10 +27,4 @@ data:
         rate_limit:
           unit: MINUTE
           requests_per_unit: 3
-      - key: generic_key
-        value: client
-        descriptors:
-          - key: remote_address
-            rate_limit:
-              unit: MINUTE
-              requests_per_unit: 1          
+    
