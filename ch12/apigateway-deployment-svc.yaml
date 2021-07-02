@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: apigateway
+  name: webapp
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: apigateway
-  name: apigateway
+    app: webapp
+  name: webapp
 spec:
   ports:
   - name: http
@@ -16,25 +16,25 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: apigateway
+    app: webapp
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: apigateway
-  name: apigateway
+    app: webapp
+  name: webapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apigateway
+      app: webapp
   template:
     metadata:
       labels:
-        app: apigateway
+        app: webapp
     spec:
-      serviceAccountName: apigateway
+      serviceAccountName: webapp
       containers:
       - env:
         - name: KUBERNETES_NAMESPACE
@@ -50,9 +50,9 @@ spec:
         - name: FORUM_SERVICE_PORT
           value: "80"
         # TODO
-        image: rinormaloku/apigateway:latest
+        image: rinormaloku/webapp:latest
         imagePullPolicy: Always
-        name: apigateway
+        name: webapp
         ports:
         - containerPort: 8080
           name: http

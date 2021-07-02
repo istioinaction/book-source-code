@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: apigateway
+      app: webapp
   rules:
   - to:
     - operation:

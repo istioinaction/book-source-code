@@ -10,5 +10,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: apigateway
+          serviceName: webapp
           servicePort: 8080
