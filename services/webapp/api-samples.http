@@ -3,7 +3,7 @@
 # - VS Code (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 ### Create new Item
-POST http://localhost:8080/api/catalogs
+POST http://localhost:8080/api/catalog/items
 Content-Type: application/json
 
 {
@@ -14,10 +14,10 @@ Content-Type: application/json
 }
 
 ### Get item list
-GET http://localhost:8080/api/catalogs
+GET http://localhost:8080/api/catalog
 
 ### Get item with id 1
-GET http://localhost:8080/api/catalogs/1
+GET http://localhost:8080/api/catalog/items/1
 
 ### Get users
 GET http://localhost:8080/api/users
