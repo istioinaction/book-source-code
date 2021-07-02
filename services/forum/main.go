@@ -49,10 +49,10 @@ func Users(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 
 func main() {
-	fmt.Printf("Server is listening in port:8000")
+	fmt.Printf("Server is listening in port:8080")
 	router := httprouter.New()
 	router.GET("/api/users", Users)
 	router.GET("/api/healthz", func (_ http.ResponseWriter, _ *http.Request, _ httprouter.Params) {})
 
-	log.Fatal(http.ListenAndServe(":8000", router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
