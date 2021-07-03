@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t istioinaction/forum:latest .
+docker build -t rinormaloku/forum:latest .

@@ -10,17 +10,18 @@ import (
 )
 
 
-type Catalog struct {
+type CatalogItem struct {
 	ID         int    `json:"id"`
 	Color      string `json:"color"`
 	Department string `json:"department"`
 	Name       string `json:"name"`
 	Price      string `json:"price"`
+	ImageURL   string `json:"imageUrl,omitempty"`
 }
 
-func GetCatalogList(headers http.Header) (*[]Catalog, error) {
+func GetCatalog(headers http.Header) (*[]CatalogItem, error) {
 	var port = os.Getenv("CATALOG_SERVICE_PORT")
-	var url = os.Getenv("CATALOG_SERVICE_NAME")
+	var url = os.Getenv("CATALOG_SERVICE_HOST")
 	catalogUrl := "http://" + url + ":" + port
 	req := httplib.Get(catalogUrl + "/items")
 
@@ -31,26 +32,21 @@ func GetCatalogList(headers http.Header) (*[]Catalog, error) {
 		return nil, err
 	}
 
-	catalogList := &[]Catalog{}
-	err = json.Unmarshal([]byte(res), catalogList)
+	catalogItems := &[]CatalogItem{}
+	err = json.Unmarshal([]byte(res), catalogItems)
 	if err != nil {
 		return nil, err
 	}
-	return catalogList, nil
+	return catalogItems, nil
 }
 
-// https://stackoverflow.com/questions/47739398/how-to-pass-json-response-in-go-beego-framework
-func CreateCatalog(catalog Catalog, headers http.Header) error {
+func CreateCatalogItem(catalogItem CatalogItem, headers http.Header) error {
 	var port = os.Getenv("CATALOG_SERVICE_PORT")
-	var url = os.Getenv("CATALOG_SERVICE_NAME")
+	var url = os.Getenv("CATALOG_SERVICE_HOST")
 	catalogUrl := "http://" + url + ":" + port
 	req := httplib.Post(catalogUrl + "/items")
-	//catalogM, err := json.Marshal(catalog)
-	//if err != nil {
-	//	return err
-	//}
 
-	req, err := req.JSONBody(catalog)
+	req, err := req.JSONBody(catalogItem)
 	if err != nil {
 		return err
 	}
@@ -68,9 +64,9 @@ func CreateCatalog(catalog Catalog, headers http.Header) error {
 	return nil
 }
 
-func GetCatalog(id int, headers http.Header) (*Catalog, error) {
+func GetCatalogItem(id int, headers http.Header) (*CatalogItem, error) {
 	var port = os.Getenv("CATALOG_SERVICE_PORT")
-	var url = os.Getenv("CATALOG_SERVICE_NAME")
+	var url = os.Getenv("CATALOG_SERVICE_HOST")
 	catalogUrl := "http://" + url + ":" + port
 	req := httplib.Get(catalogUrl + "/items/" + strconv.Itoa(id))
 
@@ -81,10 +77,10 @@ func GetCatalog(id int, headers http.Header) (*Catalog, error) {
 		return nil, err
 	}
 
-	catalog := &Catalog{}
-	err = json.Unmarshal([]byte(res), catalog)
+	catalogItem := &CatalogItem{}
+	err = json.Unmarshal([]byte(res), catalogItem)
 	if err != nil {
 		return nil, err
 	}
-	return catalog, nil
+	return catalogItem, nil
 }

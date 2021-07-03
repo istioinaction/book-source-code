@@ -71,11 +71,11 @@
                   </tr>
                   </thead>
                   <tbody>
-                  {{range $catalog := .CatalogList}}
+                  {{range $catalogItem := .CatalogItemList}}
                     <tr>
-                      <th>{{$catalog.Name}}</th>
-                      <td>{{$catalog.Color}}</td>
-                      <td>{{$catalog.Price}}</td>
+                      <th>{{$catalogItem.Name}}</th>
+                      <td>{{$catalogItem.Color}}</td>
+                      <td>{{$catalogItem.Price}}</td>
                     </tr>
                   {{end}}
                   </tbody>

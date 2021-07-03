@@ -47,7 +47,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: nicholasjackson/fake-service:v0.14.1
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: simple-tls-service
         ports:
         - containerPort: 8080

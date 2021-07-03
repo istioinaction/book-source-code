@@ -12,12 +12,12 @@ type IndexController struct {
 
 func (this *IndexController) Get() {
 	headers := ExtractHeaders(this.Ctx.Request)
-	cataloglist, err := clients.GetCatalogList(headers)
+	catalog, err := clients.GetCatalog(headers)
 	if err != nil {
 		this.Data["CatalogServiceError"] = "The catalog service is currently not available."
 	} else {
-		limitAtFour := int(math.Min(float64(len(*cataloglist)), 4))
-		this.Data["CatalogList"] = (*cataloglist)[:limitAtFour]
+		limitAtFour := int(math.Min(float64(len(*catalog)), 4))
+		this.Data["CatalogItemList"] = (*catalog)[:limitAtFour]
 	}
 
 	userlist, err := clients.GetUsers(headers)
