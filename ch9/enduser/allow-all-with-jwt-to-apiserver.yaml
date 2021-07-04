@@ -14,5 +14,5 @@ spec:
         requestPrincipals: ["auth@istioinaction.io/*"]
     to:
     - operation:
-        hosts: ["apiserver.istioinaction.io"]
+        hosts: ["webapp.istioinaction.io"]
         methods: ["GET"]

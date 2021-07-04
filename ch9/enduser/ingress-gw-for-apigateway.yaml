@@ -12,7 +12,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -21,7 +21,7 @@ metadata:
   namespace: istioinaction
 spec:
   hosts:
-  - "apiserver.istioinaction.io"
+  - "webapp.istioinaction.io"
   gateways:
   - webapp-gateway
   http:

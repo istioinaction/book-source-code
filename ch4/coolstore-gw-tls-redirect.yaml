@@ -11,7 +11,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
     tls:
       httpsRedirect: true
   - port:
@@ -22,5 +22,5 @@ spec:
       mode: SIMPLE
       credentialName: apiserver-credential
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
 

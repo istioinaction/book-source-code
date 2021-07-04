@@ -14,7 +14,7 @@ spec:
       mode: SIMPLE
       credentialName: apiserver-credential
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
   - port:
       number: 443
       name: https-catalog

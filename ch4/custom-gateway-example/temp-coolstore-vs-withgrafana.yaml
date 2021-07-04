@@ -4,7 +4,7 @@ metadata:
   name: webapp-custom-gw
 spec:
   hosts:
-  - "apiserver.istioinaction.io"
+  - "webapp.istioinaction.io"
   gateways:
   - custom-coolstore-gateway
   http:
