@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: httpbin-headless-se
+  namespace: istioinaction
+spec:
+  hosts:
+  - httpbin-headless.istioinaction.svc.cluster.local
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: DNS

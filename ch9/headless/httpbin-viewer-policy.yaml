@@ -1,0 +1,17 @@
+apiVersion: "security.istio.io/v1beta1"
+kind: "AuthorizationPolicy"
+metadata:
+  name: httpbin-viewer
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  rules:
+  - from:
+    - source:
+        principals: 
+          - "cluster.local/ns/sleep/sa/sleep"
+          - "cluster.local/ns/istioinaction/sa/sleep"
+        
+
