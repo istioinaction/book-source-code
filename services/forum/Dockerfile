@@ -5,6 +5,7 @@ RUN apk add --no-cache git
 
 ADD *.go /build/
 ADD go.mod /build/
+ADD go.sum /build/
 
 WORKDIR /build
 RUN go build -o main .
