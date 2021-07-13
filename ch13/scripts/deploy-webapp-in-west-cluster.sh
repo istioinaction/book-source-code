@@ -15,9 +15,9 @@ kwest create ns istioinaction
 kwest label namespace istioinaction istio-injection=enabled
 
 echo
-echo "== Deploy apigateway deployment, service, gateway, and virtual service =="
-kwest -n istioinaction apply -f "${ch12_dir}"/apigateway-deployment-svc.yaml
-kwest -n istioinaction apply -f "${ch12_dir}"/apigateway-gw-vs.yaml
+echo "== Deploy webapp deployment, service, gateway, and virtual service =="
+kwest -n istioinaction apply -f "${ch12_dir}"/webapp-deployment-svc.yaml
+kwest -n istioinaction apply -f "${ch12_dir}"/webapp-gw-vs.yaml
 
 echo
 echo "== Deploy a stub service for the catalog workload =="
