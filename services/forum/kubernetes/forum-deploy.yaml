@@ -25,8 +25,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: istioinaction/forum:latest
-        imagePullPolicy: IfNotPresent
+        image: rinormaloku/forum:latest
+        imagePullPolicy: Always
         name: forum
         ports:
         - containerPort: 8080

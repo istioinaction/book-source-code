@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: webapp-gateway
+  namespace: istioinaction
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "webapp.istioinaction.io"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: webapp-virtualservice
+  namespace: istioinaction
+spec:
+  hosts:
+  - "webapp.istioinaction.io"
+  gateways:
+  - webapp-gateway
+  http:
+  - route:
+    - destination:
+        host: webapp
+        port:
+          number: 80

@@ -1,12 +1,12 @@
 apiVersion: "security.istio.io/v1beta1"
 kind: "AuthorizationPolicy"
 metadata:
-  name: "apigateway-allow-unauthenticated-view-default-ns"
+  name: "webapp-allow-unauthenticated-view-default-ns"
   namespace: istioinaction
 spec:
   selector:
     matchLabels:
-      app: apigateway
+      app: webapp
   rules:
     - to:
       - operation:

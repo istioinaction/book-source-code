@@ -11,14 +11,14 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
   - port:
       number: 443
       name: https
       protocol: HTTPS
     tls:
       mode: MUTUAL
-      credentialName: apiserver-credential-mtls
+      credentialName: webapp-credential-mtls
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
 

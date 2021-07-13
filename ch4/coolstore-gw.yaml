@@ -11,4 +11,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"

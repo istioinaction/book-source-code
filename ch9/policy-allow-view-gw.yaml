@@ -10,5 +10,5 @@ spec:
   rules: 
   - to:
     - operation:
-        hosts: ["apiserver.istioinaction.io"]
+        hosts: ["webapp.istioinaction.io"]
         methods: ["GET"]

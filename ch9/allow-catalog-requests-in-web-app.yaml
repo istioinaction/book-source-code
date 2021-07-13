@@ -1,0 +1,14 @@
+apiVersion: "security.istio.io/v1beta1"
+kind: "AuthorizationPolicy"
+metadata:
+  name: "allow-catalog-requests-in-web-app"
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  rules:
+  - to:
+    - operation:
+        paths: ["/api/catalog*"]
+  action: ALLOW

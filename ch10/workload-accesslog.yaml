@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: apigateway-access-logging
+  name: webapp-access-logging
   namespace: istioinaction
 spec:
   workloadSelector:
     labels:
-      app: apigateway
+      app: webapp
   configPatches:
   - applyTo: NETWORK_FILTER
     match:

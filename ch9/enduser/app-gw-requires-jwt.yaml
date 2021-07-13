@@ -14,4 +14,4 @@ spec:
         notRequestPrincipals: ["*"]
     to:
     - operation:
-        hosts: ["apiserver.istioinaction.io"]
+        hosts: ["webapp.istioinaction.io"]

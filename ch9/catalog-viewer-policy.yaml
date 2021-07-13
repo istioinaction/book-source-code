@@ -10,7 +10,7 @@ spec:
   rules:
   - from:
     - source:
-        principals: ["cluster.local/ns/istioinaction/sa/apigateway"]
+        principals: ["cluster.local/ns/istioinaction/sa/webapp"]
     to:
     - operation:
         methods: ["GET"]

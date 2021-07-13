@@ -28,7 +28,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: rinormaloku/catalog:latency
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: catalog
         ports:
         - containerPort: 3000

@@ -42,7 +42,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: nicholasjackson/fake-service:v0.17.0
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: simple-backend-west
         ports:
         - containerPort: 8080

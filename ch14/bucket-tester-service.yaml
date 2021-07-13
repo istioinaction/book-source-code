@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - image: hashicorp/http-echo:0.2.3
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: bucket-tester
         args:
         - "-text=dark-launch-7"        

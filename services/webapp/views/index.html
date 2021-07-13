@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web App - Istio in Action</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.19.0/cytoscape.min.js" integrity="sha512-TOWs340KHbJjY/a2SCtsUcXYBg7/xPX72NKpJ3VITogkHJTy2yMyoJE0pxJjumMGHCg46ud89KO5q1Toe3Aeaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+<div class="content-wrapper wrapper">
+  <section class="hero is-landing is-large">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class  ="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              Istio in Action
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <div class="container ">
+
+        <div class="columns has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <h1 class="title is-1">
+              Service Graph
+            </h1>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-full">
+            <div id="cy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light">
+    <div class="container section">
+      <div class="content has-text-centered">
+        <h1>Service data</h1>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Data from the Catalog service
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {{ if not .CatalogServiceError }}
+                <table class="table is-bordered">
+                  <thead class="has-background-light">
+                  <tr>
+                    <th>Product</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {{range $catalogItem := .CatalogItemList}}
+                    <tr>
+                      <th>{{$catalogItem.Name}}</th>
+                      <td>{{$catalogItem.Color}}</td>
+                      <td>{{$catalogItem.Price}}</td>
+                    </tr>
+                  {{end}}
+                  </tbody>
+                </table>
+                {{else}}
+                  <p>{{.CatalogServiceError}}</p>
+                {{end}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Data from the Forum service
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {{ if not .ForumServiceError }}
+                <table class="table is-bordered">
+                  <thead class="has-background-light">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {{range $user := .UserList}}
+                  <tr>
+                    <th>{{$user.Name}}</th>
+                    <td>{{$user.Email}}</td>
+                    <td>{{$user.Company.Name}}</td>
+                  </tr>
+                  {{end}}
+                  </tbody>
+                </table>
+                {{else}}
+                <p>{{.ForumServiceError}}</p>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        Sample application for Istio in Action (<a href="https://istioinaction.io">istioinaction.io</a>)
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var cy = cytoscape({
+
+    container: document.getElementById('cy'), // container to render in
+
+    elements: [ // list of graph elements to start with
+      { // node a
+        data: { id: 'client' },
+        position: { x: -120, y: 50},
+        style: { // style property overrides
+          'opacity': 0
+        }
+      },
+      { // node a
+        data: { id: 'Web App' },
+        position: { x: 0, y: 50},
+      },
+      { // node b
+        data: { id: 'Catalog' },
+        position: { x: 200, y: 100},
+        style: { // style property overrides
+          'background-color': '{{ if .CatalogServiceError }}#AD0505{{else}}#99D568{{end}}'
+        }
+      },
+      { // node b
+        data: { id: 'Forum' },
+        position: { x: 200, y: 0},
+        style: { // style property overrides
+          'background-color': '{{ if .ForumServiceError }}#AD0505{{else}}#99D568{{end}}'
+        }
+      },
+      { // edge ab
+        data: { id: 'client-call', source: 'client', target: 'Web App',}
+      },
+      { // edge ab
+        data: { id: 'web-to-catalog', source: 'Web App', target: 'Catalog',}
+      },
+      { // edge ab
+        data: { id: 'web-to-forum', source: 'Web App', target: 'Forum' }
+      }
+    ],
+
+    style: [ // the stylesheet for the graph
+      {
+        selector: 'node',
+        style: {
+          'background-color': '#99D568',
+          'label': 'data(id)',
+          "text-valign" : "center",
+          "text-halign" : "center",
+          "width": "80px",
+          'color': '#fefefe',
+          'shape': 'square',
+        }
+      },
+
+      {
+        selector: 'edge',
+        style: {
+          'width': 3,
+          'line-color': '#000',
+          'target-arrow-color': '#000',
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'bezier'
+        }
+      }
+    ],
+
+    layout: {
+      name: 'preset',
+      padding: 10
+    }
+  });
+
+</script>
+
+</body>
+</html>

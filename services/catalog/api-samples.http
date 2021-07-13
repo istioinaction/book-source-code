@@ -1,3 +1,8 @@
+# Requests can be executed in:
+# - IntelliJ (https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html)
+# - VS Code (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+
 ### Get items
 GET http://localhost:3000/api/items
 

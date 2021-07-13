@@ -1,0 +1,23 @@
+# Requests can be executed in:
+# - IntelliJ (https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html)
+# - VS Code (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+### Create new Item
+POST http://localhost:8080/api/catalog/items
+Content-Type: application/json
+
+{
+  "color": "blue",
+  "department": "Sports",
+  "name": "Basketball hoop",
+  "price": "2700.00"
+}
+
+### Get item list
+GET http://localhost:8080/api/catalog
+
+### Get item with id 1
+GET http://localhost:8080/api/catalog/items/1
+
+### Get users
+GET http://localhost:8080/api/users
