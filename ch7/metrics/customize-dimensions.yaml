@@ -5,7 +5,7 @@ metadata:
   namespace: istioinaction
 spec:
   workloadSelector:
-    label:
+    labels:
       app: webapp
   configPatches:
   ## Sidecar Outbound 

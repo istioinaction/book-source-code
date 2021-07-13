@@ -1,7 +1,7 @@
 apiVersion: "security.istio.io/v1beta1"
 kind: "AuthorizationPolicy"
 metadata:
-  name: "allow-catalog-requests-in-api-gw"
+  name: "allow-catalog-requests-in-web-app"
   namespace: istioinaction
 spec:
   selector:
