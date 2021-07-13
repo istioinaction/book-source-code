@@ -18,7 +18,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: apiserver-credential
+      credentialName: webapp-credential
     hosts:
     - "webapp.istioinaction.io"
 

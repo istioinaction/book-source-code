@@ -18,7 +18,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: MUTUAL
-      credentialName: apiserver-credential-mtls
+      credentialName: webapp-credential-mtls
     hosts:
     - "webapp.istioinaction.io"
 
