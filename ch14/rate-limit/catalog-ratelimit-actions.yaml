@@ -42,5 +42,6 @@ spec:
               - header_value_match:
                   descriptor_value: gold_request
                   headers:
-                  - name: "x-loyalty"                  
+                  - name: "x-loyalty"
+                    exact_match: gold
 
