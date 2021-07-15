@@ -1,0 +1,38 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: opa-wasm-config
+  namespace: istioinaction
+spec:
+  workloadSelector:
+    labels:
+      app: httpbin
+  configPatches:
+  - applyTo: EXTENSION_CONFIG
+    match:
+      context: SIDECAR_INBOUND
+    patch:
+      operation: ADD
+      value:
+        name: istio.opa
+        typed_config:
+          '@type': type.googleapis.com/udpa.type.v1.TypedStruct
+          type_url: type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm
+          value:
+            config:
+              configuration:
+                '@type': type.googleapis.com/google.protobuf.StringValue
+                value: |
+                  {
+                    "opa_cluster_name": "outbound|8181||opa.istioinaction.svc.cluster.local",
+                    "opa_service_host": "opa.istioinaction.svc.cluster.local",
+                    "check_result_cache_valid_sec": 10
+                  }
+              vm_config:
+                vm_id: opa
+                code:
+                  remote:
+                    http_uri:
+                      uri: https://storage.googleapis.com/istio-ecosystem/wasm-extensions/opa/test.wasm
+                runtime: envoy.wasm.runtime.v8
