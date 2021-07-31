@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t istioinaction/n/catalog:latest .
+docker build -t istioinaction/catalog:latest .
