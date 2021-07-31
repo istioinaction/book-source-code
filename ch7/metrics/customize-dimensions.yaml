@@ -5,8 +5,8 @@ metadata:
   namespace: istioinaction
 spec:
   workloadSelector:
-    label:
-      app: apigateway
+    labels:
+      app: webapp
   configPatches:
   ## Sidecar Outbound 
   - applyTo: HTTP_FILTER

@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CATALOG_SERVICE_HOST
+          value: catalog.istioinaction
+        - name: CATALOG_SERVICE_PORT
+          value: "80"
+        - name: FORUM_SERVICE_HOST
+          value: forum.istioinaction
+        - name: FORUM_SERVICE_PORT
+          value: "80"
+        image: istioinaction/webapp:latest
+        imagePullPolicy: IfNotPresent
+        name: webapp
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        securityContext:
+          privileged: false

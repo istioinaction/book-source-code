@@ -11,7 +11,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
 
   - port:
       number: 443
@@ -23,5 +23,5 @@ spec:
       privateKey: /etc/istio/ingressgateway-certs/tls.key
       caCertificates: /etc/istio/ingressgateway-ca-certs
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
 

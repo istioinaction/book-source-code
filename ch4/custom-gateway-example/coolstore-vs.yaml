@@ -1,15 +1,15 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: apigateway-custom-gw
+  name: webapp-custom-gw
 spec:
   hosts:
-  - "apiserver.istioinaction.io"
+  - "webapp.istioinaction.io"
   gateways:
   - custom-coolstore-gateway
   http:
   - route:
     - destination:
-        host: apigateway
+        host: webapp
         port:
           number: 8080

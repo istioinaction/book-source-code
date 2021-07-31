@@ -6,7 +6,7 @@ metadata:
 spec:
   workloadSelector:
     label:
-      app: apigateway
+      app: webapp
   configPatches:
   ## Sidecar Outbound 
   - applyTo: HTTP_FILTER

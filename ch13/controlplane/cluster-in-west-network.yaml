@@ -1,0 +1,17 @@
+apiVersion: install.istio.io/v1alpha1
+metadata:
+  name: istio-controlplane
+  namespace: istio-system
+kind: IstioOperator
+spec:
+  profile: demo
+  components:
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: false
+  values:
+    global:
+      meshID: usmesh
+      multiCluster:
+        clusterName: west-cluster
+      network: west-network

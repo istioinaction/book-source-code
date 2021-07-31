@@ -25,7 +25,7 @@ spec:
     stepWeight: 10
     match: 
     - sourceLabels:
-        app: apigateway
+        app: webapp
     metrics:
     - name: request-success-rate
       thresholdRange:
@@ -35,4 +35,3 @@ spec:
       thresholdRange:
         max: 500
       interval: 30s
-
