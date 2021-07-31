@@ -30,7 +30,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: nicholasjackson/fake-service:v0.7.8
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: webapp
         ports:
         - containerPort: 8080

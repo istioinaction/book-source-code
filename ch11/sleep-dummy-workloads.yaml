@@ -35,7 +35,7 @@ spec:
       - name: sleep
         image: governmentpaas/curl-ssl
         command: ["/bin/sleep", "3650d"]
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - mountPath: /etc/sleep/tls
           name: secret-volume

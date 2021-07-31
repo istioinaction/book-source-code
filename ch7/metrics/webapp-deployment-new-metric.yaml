@@ -26,7 +26,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: istioinaction/webapp:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: webapp
         ports:
         - containerPort: 8080

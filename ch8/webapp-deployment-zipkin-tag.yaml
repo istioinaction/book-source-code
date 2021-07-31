@@ -40,7 +40,7 @@ spec:
         - name: FORUM_SERVICE_PORT
           value: "80"
         image: istioinaction/webapp:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: webapp
         ports:
         - containerPort: 8080

@@ -54,7 +54,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: nicholasjackson/fake-service:v0.17.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: simple-backend
         ports:
         - containerPort: 8080
@@ -99,7 +99,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: nicholasjackson/fake-service:v0.17.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: simple-backend
         ports:
         - containerPort: 8080

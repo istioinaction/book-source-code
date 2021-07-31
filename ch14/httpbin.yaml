@@ -54,7 +54,7 @@ spec:
       serviceAccountName: httpbin
       containers:
       - image: docker.io/kennethreitz/httpbin
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: httpbin
         ports:
         - containerPort: 80

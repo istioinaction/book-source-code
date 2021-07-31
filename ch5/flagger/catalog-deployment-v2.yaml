@@ -27,7 +27,7 @@ spec:
         - name: SHOW_IMAGE
           value: "true"
         image: istioinaction/catalog:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: catalog
         ports:
         - containerPort: 3000

@@ -23,7 +23,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: istioinaction/catalog:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: catalog
         ports:
         - containerPort: 3000
