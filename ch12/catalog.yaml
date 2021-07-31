@@ -44,7 +44,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: rinormaloku/catalog:latest
+        image: istioinaction/catalog:latest
         imagePullPolicy: Always
         name: catalog
         ports:

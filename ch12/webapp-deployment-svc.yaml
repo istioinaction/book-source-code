@@ -49,8 +49,7 @@ spec:
           value: forum.forum-services
         - name: FORUM_SERVICE_PORT
           value: "80"
-        # TODO
-        image: rinormaloku/webapp:latest
+        image: istioinaction/webapp:latest
         imagePullPolicy: Always
         name: webapp
         ports:

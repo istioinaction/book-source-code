@@ -31,7 +31,7 @@ spec:
           value: forum.istioinaction
         - name: FORUM_SERVICE_PORT
           value: "80"
-        image: rinormaloku/webapp:latest
+        image: istioinaction/webapp:latest
         imagePullPolicy: Always
         name: webapp
         ports:

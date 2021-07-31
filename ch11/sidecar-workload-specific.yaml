@@ -8,6 +8,6 @@ spec:
   egress:
   - hosts:
     - "istio-system/*"
-    - "rinormaloku/catalog.istioinaction.svc.cluster.local"
+    - "istioinaction/catalog.istioinaction.svc.cluster.local"
   outboundTrafficPolicy:
     mode: REGISTRY_ONLY

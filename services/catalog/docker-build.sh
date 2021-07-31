@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t rinormaloku/catalog:latest .
+docker build -t istioinaction/n/catalog:latest .
