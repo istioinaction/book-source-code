@@ -6,7 +6,7 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      app: apigateway
+      app: webapp
   configPatches:
   - applyTo: HTTP_FILTER
     match:

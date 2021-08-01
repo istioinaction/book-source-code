@@ -1,0 +1,51 @@
+.hero.is-large .hero-body {
+    padding-bottom: 0;
+    padding-top: 1rem;
+}
+.bg-light {
+    background-color: #faf6fb;
+}
+
+.section {
+    padding: 5rem 3rem;
+}
+
+.content h1 {
+    margin-bottom: 2em;
+}
+
+.hero.is-landing {
+    color: #ffffff;
+    background-image: linear-gradient( 135deg, rgba(81, 107, 170, 0.8) 0%, rgba(125, 198, 242, 0.8) 100%);
+}
+
+.hero.is-landing * {
+    color: #ffffff;
+}
+
+#info-section h1 {
+    color: #ffffff;
+}
+
+#cy {
+    width: 100%;
+    /*min-width: 300px;*/
+    min-height: 200px;
+    /*position: relative;*/
+}
+
+.footer {
+    background-color: #516baa;
+    background-image: linear-gradient( 135deg, rgba(81, 107, 170, 0.8) 0%, rgba(125, 198, 242, 0.8) 100%);
+    color: whitesmoke;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex: 1;
+}

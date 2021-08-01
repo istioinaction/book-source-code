@@ -8,13 +8,13 @@ spec:
   servers:
   - port:
       number: 443
-      name: https-apiserver
+      name: https-webapp
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: apiserver-credential
+      credentialName: webapp-credential
     hosts:
-    - "apiserver.istioinaction.io"
+    - "webapp.istioinaction.io"
   - port:
       number: 443
       name: https-catalog
