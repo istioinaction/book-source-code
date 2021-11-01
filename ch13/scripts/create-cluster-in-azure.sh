@@ -10,6 +10,7 @@ fi
 echo "== Create cluster =="
 az group create --resource-group west-cluster-rg --location westus > /dev/null
 
+# // To DO this command requires: --generate-ssh-keys or making use of the keys in the keys dir
 az aks create --name west-cluster  \
               --resource-group west-cluster-rg \
               --node-count 1 \

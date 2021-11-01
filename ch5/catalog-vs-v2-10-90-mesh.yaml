@@ -6,7 +6,7 @@ spec:
   hosts:
   - catalog
   gateways:
-    - mesh
+  - mesh
   http:
   - route:
     - destination:
