@@ -13,7 +13,10 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/statsInclusionPrefixes: "cluster.outbound|80||catalog.istioinaction.svc.cluster.local"    
+        proxy.istio.io/config: |-
+          proxyStatsMatcher:
+            inclusionPrefixes:
+            - "cluster.outbound|80||catalog.istioinaction"
       labels:
         app: webapp
     spec:

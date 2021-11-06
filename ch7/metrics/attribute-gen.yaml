@@ -4,9 +4,6 @@ metadata:
   name: attribute-gen-example
   namespace: istioinaction
 spec:
-  workloadSelector:
-    label:
-      app: webapp
   configPatches:
   ## Sidecar Outbound 
   - applyTo: HTTP_FILTER
@@ -19,7 +16,7 @@ spec:
             subFilter:
               name: istio.stats
       proxy:
-        proxyVersion: ^1\.9.*
+        proxyVersion: ^1\.11.*
     patch:
       operation: INSERT_BEFORE
       value:

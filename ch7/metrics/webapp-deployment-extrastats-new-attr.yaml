@@ -10,11 +10,12 @@ spec:
   selector:
     matchLabels:
       app: webapp
-      
   template:
     metadata:
       annotations:
-        sidecar.istio.io/extraStatTags: upstream_proxy_version,source_mesh_id,upstream_operation
+        proxy.istio.io/config: |-
+          extraStatTags: 
+          - "upstream_operation"
       labels:
         app: webapp
     spec:

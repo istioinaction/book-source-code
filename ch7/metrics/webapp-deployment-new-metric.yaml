@@ -14,8 +14,10 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/extraStatTags: upstream_proxy_version,source_mesh_id
-        sidecar.istio.io/statsInclusionPrefixes: istio_get_calls
+        proxy.istio.io/config: |-
+          proxyStatsMatcher:
+            inclusionPrefixes:
+            - "istio_get_calls"
       labels:
         app: webapp
     spec:
