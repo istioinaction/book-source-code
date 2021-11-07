@@ -1,1 +1,0 @@
-export ISTIO_RELEASE=/Users/ceposta/dev/istio/latest
