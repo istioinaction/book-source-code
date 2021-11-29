@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: simple-web-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "simple-web.istioinaction.io"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: simple-web-vs-for-gateway
+spec:
+  hosts:
+  - "simple-web.istioinaction.io"
+  gateways:
+  - simple-web-gateway
+  http:
+  - route:
+    - destination:
+        host: simple-web   
+    retries:
+      attempts: 2        
