@@ -1,0 +1,25 @@
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: add-new-metric
+  namespace: istioinaction
+spec:
+  metrics:
+  - providers:
+      - name: prometheus
+    overrides:
+      - match: 
+          # This does not work yet; you cannot add new
+          # metrics with the Telmetry API yet (as of Istio 1.12)
+          customMetric: get_calls
+          mode: CLIENT_AND_SERVER
+        disabled: false
+        tagOverrides:
+          upstream_proxy_version:
+            operation: UPSERT
+            value: upstream_peer.istio_version
+          source_mesh_id: 
+            operation: UPSERT
+            value: node.metadata['MESH_ID']
+          request_protocol:
+            operation: REMOVE
