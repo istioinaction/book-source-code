@@ -1,0 +1,24 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  profile: demo
+  values:
+    telemetry:
+      v2:
+        prometheus:
+          configOverride:
+            inboundSidecar:
+              metrics:
+              - name: requests_total
+                dimensions:
+                  upstream_operation: istio_operationId
+            outboundSidecar:
+              metrics:
+              - name: requests_total
+                dimensions:
+                  upstream_operation: istio_operationId
+            gateway:
+              metrics:
+              - name: requests_total
+                dimensions:
+                  upstream_operation: istio_operationId

@@ -7,4 +7,3 @@ target
 .project
 .settings
 **/node_modules
-istio-*

@@ -1,0 +1,24 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  profile: demo
+  values:
+    telemetry:
+      v2:
+        prometheus:
+          configOverride:
+            inboundSidecar:
+              definitions:
+              - name: get_calls
+                type: COUNTER
+                value: "(request.method.startsWith('GET') ? 1 : 0)"
+            outboundSidecar:
+              definitions:
+              - name: get_calls
+                type: COUNTER
+                value: "(request.method.startsWith('GET') ? 1 : 0)"
+            gateway:
+              definitions:
+              - name: get_calls
+                type: COUNTER
+                value: "(request.method.startsWith('GET') ? 1 : 0)"

@@ -1,0 +1,33 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  profile: demo
+  values:
+    telemetry:
+      v2:
+        prometheus:
+          configOverride:
+            inboundSidecar:
+              metrics:
+              - name: requests_total
+                dimensions:
+                  upstream_proxy_version: upstream_peer.istio_version
+                  source_mesh_id: node.metadata['MESH_ID']
+                tags_to_remove:
+                - request_protocol
+            outboundSidecar:
+              metrics:
+              - name: requests_total
+                dimensions:
+                  upstream_proxy_version: upstream_peer.istio_version
+                  source_mesh_id: node.metadata['MESH_ID']
+                tags_to_remove:
+                - request_protocol
+            gateway:
+              metrics:
+              - name: requests_total
+                dimensions:
+                  upstream_proxy_version: upstream_peer.istio_version
+                  source_mesh_id: node.metadata['MESH_ID']
+                tags_to_remove:
+                - request_protocol
