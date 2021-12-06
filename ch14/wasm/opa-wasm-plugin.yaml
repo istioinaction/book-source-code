@@ -1,0 +1,15 @@
+apiVersion: extensions.istio.io/v1alpha1
+kind: WasmPlugin
+metadata:
+  name: opa-wasm-filter
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  pluginName: istio.opa
+  url: https://storage.googleapis.com/istio-ecosystem/wasm-extensions/opa/test.wasm
+  pluginConfig:
+    opa_cluster_name: "outbound|8181||opa.istioinaction.svc.cluster.local"
+    opa_service_host: "opa.istioinaction.svc.cluster.local"
+    check_result_cache_valid_sec: 10

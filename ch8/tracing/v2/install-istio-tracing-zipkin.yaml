@@ -1,0 +1,17 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+spec:
+  meshConfig: 
+    defaultConfig:
+      tracing: null
+      discoveryAddress: istiod.istio-system.svc:15012
+      proxyMetadata: {}       
+    extensionProviders:
+    - name: "zipkinlocal"
+      zipkin:
+        service: zipkin.istio-system.svc.cluster.local
+        port: 9411
+
+
