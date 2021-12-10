@@ -2,12 +2,8 @@
 
 set -e
 
-# Print commands using the flag '-v'
-if [[ $* == *-v* ]]; then
-  set -x
-fi
 
-keys_dir=`dirname "$BASH_SOURCE"`/../keys
+keys_dir=$(dirname "$(realpath "$0")")/../keys
 chmod 0600 "${keys_dir}"/id_rsa
 
 echo "== Create the resource group =="

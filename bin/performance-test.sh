@@ -13,6 +13,12 @@ main(){
 
   PRE_PUSHES=$(kubectl -n istioinaction exec -it $SLEEP_POD -c sleep -- curl "$PROM_URL/api/v1/query?query=sum(pilot_xds_pushes%7B%7D)" | jq  '.. |."value"? | select(. != null) | .[1]' -r) 
 
+  if [[ -z "$PRE_PUSHES" ]]; then
+    echo "Failed to query Pilot Pushes from prometheus."
+    echo "Have you installed prometheus as shown in chapter 7?"
+    exit 1
+  fi
+
   echo "Pre Pushes: $PRE_PUSHES"
 
   ## Duration for all requests
