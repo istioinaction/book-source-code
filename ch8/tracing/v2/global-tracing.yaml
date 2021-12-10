@@ -1,0 +1,12 @@
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: tracing-global
+  namespace: istio-system
+spec:
+  tracing:
+  - providers:
+      - name: zipkinlocal
+    disableSpanReporting: false
+    randomSamplingPercentage: 100
+

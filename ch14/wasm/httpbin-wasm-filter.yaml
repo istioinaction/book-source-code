@@ -1,0 +1,12 @@
+apiVersion: extensions.istio.io/v1alpha1
+kind: WasmPlugin
+metadata:
+  name: httpbin-wasm-filter
+  namespace: istioinaction
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  pluginName: add_header
+  url: oci://webassemblyhub.io/ceposta/istioinaction-demo:1.0
+
