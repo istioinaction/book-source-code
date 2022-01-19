@@ -16,7 +16,7 @@ spec:
             subFilter:
               name: istio.stats
       proxy:
-        proxyVersion: ^1\.12.*
+        proxyVersion: ^1\.13.*
     patch:
       operation: INSERT_BEFORE
       value:
