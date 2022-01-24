@@ -2,11 +2,6 @@
 
 set -e
 
-# Print commands using the flag '-v'
-if [[ $* == *-v* ]]; then
-  set -x
-fi
-
 echo "== Create cluster =="
 az group create --resource-group west-cluster-rg --location westus > /dev/null
 

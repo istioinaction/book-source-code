@@ -4,6 +4,8 @@ metadata:
   name: control-plane
 spec:
   profile: demo
+  meshConfig: 
+    accessLogEncoding: JSON
   components:
     ingressGateways:
     - name: istio-ingressgateway
