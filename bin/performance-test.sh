@@ -51,7 +51,7 @@ main(){
   LATENCY=$(kubectl -n istioinaction exec -it $SLEEP_POD -c sleep -- curl "$PROM_URL/api/v1/query" --data-urlencode "query=histogram_quantile(0.99, sum(rate(pilot_proxy_convergence_time_bucket[1m])) by (le))" | jq  '.. |."value"? | select(. != null) | .[1]' -r)
 
   echo "Push count:" `expr $POST_PUSHES - $PRE_PUSHES`
-  echo "Latency in the last minute: `printf "%.2f\n" $LATENCY` seconds" 
+  echo "Latency in the last minute: `printf "%.2f\n" $LATENCY` ms" 
 }
 
 create_random_resource() {
