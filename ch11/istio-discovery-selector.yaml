@@ -3,6 +3,7 @@ kind: IstioOperator
 metadata:
   namespace: istio-system
 spec:
+  profile: demo
   meshConfig:
     discoverySelectors:
       - matchExpressions:
