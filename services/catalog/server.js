@@ -59,20 +59,20 @@ const blowupMiddleware = function (req, res, next) {
                     console.log("rando is " + rando + " and percentage is " + percentage)
                     if (rando <= percentage) {
                         console.log("Sending a 500 blowup");
-                        res.status(500).end();
                         blownUp = true;
+                        res.status(500).end();
                     }
                 }
                 else if (value.type == "latency") {
-                    var sleep = value.latencyMs || 1000
+                    var sleep = value.latencyMs || 1000;
                     // if volatile is set then sleep fluctuates from 0 to the latency value
                     if (value.volatile) {
                         sleep = Math.floor(Math.random() * sleep);
                     }
 
-                    console.log("Sending a latency blowup for " + sleep + "ms")
+                    console.log("Sending a latency blowup for " + sleep + "ms");
+                    blownUp = true;
                     setTimeout(() => { next() }, sleep);
-                    blownUp = true
                 }
                 else if (value.type == "drop") {
                     var rando = Math.floor(Math.random() * 100);
@@ -80,8 +80,8 @@ const blowupMiddleware = function (req, res, next) {
                     console.log("rando is " + rando + " and percentage is " + percentage)
                     if (rando <= percentage) {
                         console.log("Dropping connection");
+                        blownUp = true;
                         req.socket.end();
-                        blownUp = true
                     }
                 }
             }
