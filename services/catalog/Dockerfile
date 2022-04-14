@@ -17,6 +17,7 @@ WORKDIR /usr/src/app
 COPY --from=BUILD_IMAGE /usr/src/app/ /usr/src/app/
 COPY --from=BUILD_IMAGE /node_modules /node_modules
 COPY *.js /usr/src/app/
+RUN apk add curl
 
 EXPOSE 3000
 ENTRYPOINT ["node", "server.js"]
