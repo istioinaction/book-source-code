@@ -1,4 +1,4 @@
-<img align="right" width="140" src="https://images.manning.com/360/480/resize/book/2/af4f618-f704-4bf5-9617-3e2db3e43e58/Psta-Istio-MEAP-HI.png">
+<img align="right" width="180" src="https://images.manning.com/360/480/resize/book/9/c4c70b2-b6c8-4061-8ad3-8f503689ffdd/Posta-Istio-HI.png">
 
 # Istio in Action
 
