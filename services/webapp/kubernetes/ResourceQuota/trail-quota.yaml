@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: trial-quota
+spec:
+  hard:
+    cpu: "4"
+    memory: 16Gi
+    services.loadbalancers: "1"
+    services.nodeports: "2"
+    requests.storage: 20Gi

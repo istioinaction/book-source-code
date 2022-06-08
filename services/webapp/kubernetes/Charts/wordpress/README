@@ -1,0 +1,20 @@
+WordPress packaged for CaaS Express Trial
+
+- it includes the Wordpress WebApp + mariaDB / MemCached with Persistent Volume
+- all dependencies have been packaged to its charts folder
+- all required images have been available from Pulp registry:
+
+  - image:
+    registry: gl3-pulpnode.gl-hpe.local
+    repository: wordpress
+    tag: 5.9.3-debian-11-r0
+
+  - image:
+    registry: gl3-pulpnode.gl-hpe.local
+    repository: mariadb
+    tag: 10.6.8-debian-11-r0
+
+  - image:
+    registry: gl3-pulpnode.gl-hpe.local
+    repository: memcached
+    tag: 1.6.15-debian-11-r0

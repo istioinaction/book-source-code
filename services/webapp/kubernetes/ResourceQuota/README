@@ -1,0 +1,32 @@
+
+The resource quota should be deployed per namespace:
+
+$ cat ResourceQuota/trail-quota.yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: trial-quota
+spec:
+  hard:
+    cpu: "4"
+    memory: 16Gi
+    services.loadbalancers: "1"
+    services.nodeports: "2"
+    requests.storage: 20Gi
+
+$ kubectl create ns user1-ns
+namespace/user1-ns created
+
+$ kubectl apply -f ResourceQuota/trail-quota.yaml -n user1-ns
+resourcequota/trial-quota created
+
+$ kubectl describe resourcequota -n user1-ns
+Name:                   trial-quota
+Namespace:              user1-ns
+Resource                Used  Hard
+--------                ----  ----
+cpu                     0     4
+memory                  0     16Gi
+requests.storage        0     20Gi
+services.loadbalancers  0     1
+services.nodeports      0     2

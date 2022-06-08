@@ -1,0 +1,18 @@
+The OPA policies can be applied by running the following commands:
+
+$ ls
+all_pod_prohibit_latest_image_tag.yaml  k8sprohibitedtags_template.yaml
+
+$ kubectl apply -f k8sprohibitedtags_template.yaml
+constrainttemplate.templates.gatekeeper.sh/k8sprohibitedtags created
+
+$ kubectl get constrainttemplate k8sprohibitedtags
+NAME                AGE
+k8sprohibitedtags   20s
+
+$ kubectl apply -f all_pod_prohibit_latest_image_tag.yaml
+k8sprohibitedtags.constraints.gatekeeper.sh/pod-prohibit-latest-image-tag created
+
+$ kubectl get k8sprohibitedtags.constraints.gatekeeper.sh/pod-prohibit-latest-image-tag
+NAME                            AGE
+pod-prohibit-latest-image-tag   13s
