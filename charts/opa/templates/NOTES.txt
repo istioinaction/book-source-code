@@ -1,0 +1,5 @@
+
+To check if the constraints and constraint templates have been applied run these commands:
+
+ kubectl get constrainttemplate k8sprohibitedtags
+ kubectl get k8sprohibitedtags.constraints.gatekeeper.sh/pod-prohibit-latest-image-tag

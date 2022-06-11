@@ -1,0 +1,18 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sProhibitedTags
+metadata:
+  annotations:
+    description: Pods prohibit to use 'latest' image tag
+  labels:
+  name: pod-prohibit-latest-image-tag
+spec:
+  enforcementAction: {{ .Values.enforcementMode }}
+  match:
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
+  parameters:
+    tags:
+    - {{ .Values.prohibitedTag }}
