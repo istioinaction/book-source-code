@@ -31,4 +31,49 @@ spec:
             - NET_RAW
             drop:
             - ALL
-        
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: httpbin
+  name: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: httpbin
+    spec:
+      containers:
+      - image: docker.io/kennethreitz/httpbin
+        name: httpbin
+        ports:
+        - containerPort: 80
+        resources: {}
+      - args:
+        - proxy
+        - sidecar
+        # ... more arguments
+        image: docker.io/istio/proxyv2:1.11.0
+        name: istio-proxy
+      initContainers:
+      - args:
+        - istio-iptables
+        # ... even more arguments
+        image: docker.io/istio/proxyv2:1.11.0
+        name: istio-init
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
+            - NET_RAW
+            drop:
+            - ALL
