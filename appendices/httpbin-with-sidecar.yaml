@@ -2,9 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
+  labels:
+    app: httpbin
   name: httpbin
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin
+  strategy: {}
   template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: httpbin
     spec:
       containers:
       - image: docker.io/kennethreitz/httpbin
@@ -31,4 +42,3 @@ spec:
             - NET_RAW
             drop:
             - ALL
-        
