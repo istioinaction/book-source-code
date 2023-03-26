@@ -4,7 +4,7 @@ metadata:
   name: catalog
 spec:
   hosts:
-  - catalog
+  - catalog.istioinaction.io
   gateways:
     - mesh
   http:
