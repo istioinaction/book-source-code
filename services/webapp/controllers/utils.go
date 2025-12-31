@@ -9,6 +9,8 @@ func ExtractHeaders(r *http.Request) http.Header {
 	customHeaders := http.Header{}
 	for name, value := range r.Header {
 		if strings.HasPrefix(strings.ToLower(name), "x-") ||
+			strings.EqualFold(name, "traceparent") ||
+			strings.EqualFold(name, "tracestate") ||
 			strings.HasPrefix(name, "Authorization") {
 			customHeaders.Add(name, value[0])
 		}
